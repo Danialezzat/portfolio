@@ -15,7 +15,12 @@ const About = () => {
                     </div>
                     <div>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate laboriosam distinctio neque non facere aspernatur omnis soluta libero amet vero. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit inventore doloribus, minima est saepe maiores incidunt dolore, consequuntur veniam harum adipisci, vitae eveniet illo nobis ipsam distinctio? Ab, dolorum cumque.
+                            I was born in a cold day of 1996,
+                            I use to be a Radiology technician and I served in a hospital during the pandamic of COVID-19 .
+                            as I always been intrested in coding and in technology I do always wanted to change my subject to computer science and guess what !?
+                            in last months of 2022 I started stuyding about FrontEnd Web development and chnaged my subject to DATA SCIENCE of Verona , Italy in late 2023.
+                            I have always been learning and I say life is just about learning every single minutes and seconds.
+                            so I will do keep learning.
                         </p>
                     </div>
                 </div>
