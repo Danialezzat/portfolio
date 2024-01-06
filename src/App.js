@@ -7,7 +7,7 @@ import Work from "./components/Work";
 
 function App() {
   return (
-    <div className="App flex flex-col">
+    <div className="App flex flex-col justify-between items-center w-full">
       <Navbar />
       <Home />
       <About />
