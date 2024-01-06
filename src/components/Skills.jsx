@@ -10,7 +10,7 @@ import TailwindCSS from '../assets/tailwind.png'
 
 const Skills = () => {
   return (
-    <div name='skills' className='w-full pb-[90px] h-screen bg-[#0a192f] text-gray-300'>
+    <div name='skills' className='w-full pb-[90px] h-[200vh] bg-[#0a192f] text-gray-300'>
 
         {/* container */}
         <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
