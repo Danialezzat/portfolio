@@ -28,7 +28,7 @@ const Work = () => {
                     {/* hover effect */}
                     <div className='opacity-0 group-hover:opacity-100 w-full hover:backdrop-blur-3xl flex flex-col justify-center items-center h-[100%] duration-500'>
                         <span className='text-2xl font-bold text-white tracking-wider'>
-React JS Application
+Necent Project
                         </span>
                         <div className='pt-8 text-center '>
                             <a href="https://dreamy-lily-5a3834.netlify.app/">
@@ -49,7 +49,7 @@ React JS Application
                     {/* hover effect */}
                     <div className='opacity-0 group-hover:opacity-100 w-full hover:backdrop-blur-3xl flex flex-col justify-center items-center h-[100%] duration-500'>
                         <span className='text-2xl font-bold text-white tracking-wider'>
-React JS Application
+HooBank Project
                         </span>
                         <div className='pt-8 text-center '>
                             <a href="https://tubular-pika-a9805b.netlify.app">
@@ -70,7 +70,7 @@ React JS Application
                     {/* hover effect */}
                     <div className='opacity-0 group-hover:opacity-100 w-full hover:backdrop-blur-3xl flex flex-col justify-center items-center h-[100%] duration-500'>
                         <span className='text-2xl font-bold text-white tracking-wider'>
-React JS Application
+Advice Maker
                         </span>
                         <div className='pt-8 text-center '>
                             <a href="https://peaceful-fudge-743d80.netlify.app">
@@ -91,7 +91,7 @@ React JS Application
                     {/* hover effect */}
                     <div className='opacity-0 group-hover:opacity-100 w-full hover:backdrop-blur-3xl flex flex-col justify-center items-center h-[100%] duration-500'>
                         <span className='text-2xl font-bold text-white tracking-wider'>
-React JS Application
+Finance Project
                         </span>
                         <div className='pt-8 text-center '>
                             <a href="https://splendid-peony-d81ad6.netlify.app">
@@ -112,7 +112,7 @@ React JS Application
                     {/* hover effect */}
                     <div className='opacity-0 group-hover:opacity-100 w-full hover:backdrop-blur-3xl flex flex-col justify-center items-center h-[100%] duration-500'>
                         <span className='text-2xl font-bold text-white tracking-wider'>
-React JS Application
+Nike
                         </span>
                         <div className='pt-8 text-center '>
                             <a href="https://dazzling-melomakarona-560b63.netlify.app">
@@ -134,7 +134,7 @@ React JS Application
                     {/* hover effect */}
                     <div className='opacity-0 group-hover:opacity-100 w-full hover:backdrop-blur-3xl flex flex-col justify-center items-center h-[100%] duration-500'>
                         <span className='text-2xl font-bold text-white tracking-wider'>
-React JS Application
+CRUD
                         </span>
                         <div className='pt-8 text-center '>
                             <a href="https://dulcet-kheer-825472.netlify.app">
