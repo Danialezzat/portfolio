@@ -5,6 +5,7 @@ import Nexcent from '../assets/projects/nexcent.png';
 import Advice from '../assets/projects/advice.png';
 import Finance from '../assets/projects/finance.png';
 import CRUD from '../assets/projects/crud.png';
+import Netflix from '../assets/projects/netflix.png';
 
 const Work = () => {
   return (
@@ -21,6 +22,28 @@ const Work = () => {
 
                 {/* grid item */}
                 <div 
+                    style={{ backgroundImage: `url(${Netflix})`}}
+                    className='shadow-lg shadow-[#040c16] group container  rounded-md flex justify-center items-center mx-auto  content-div '>
+
+
+                    {/* hover effect */}
+                    <div className='opacity-0 group-hover:opacity-100 w-full hover:backdrop-blur-3xl flex flex-col justify-center items-center h-[100%] duration-500'>
+                        <span className='text-2xl font-bold text-white tracking-wider'>
+Necent Project
+                        </span>
+                        <div className='pt-8 text-center '>
+                            <a href="https://super-buttercream-b4390c.netlify.app">
+                                <button className='text-center rounded-l-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg'>Demo</button>
+                            </a>
+                            <a href="https://github.com/Danialezzat/netflix">
+                                <button className='text-center rounded-r-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg'>Code</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                {/* grid item */}
+                <div 
                     style={{ backgroundImage: `url(${Nexcent})`}}
                     className='shadow-lg shadow-[#040c16] group container  rounded-md flex justify-center items-center mx-auto  content-div '>
 
@@ -31,7 +54,7 @@ const Work = () => {
 Necent Project
                         </span>
                         <div className='pt-8 text-center '>
-                            <a href="https://dreamy-lily-5a3834.netlify.app/">
+                            <a href="https://dreamy-lily-5a3834.netlify.app">
                                 <button className='text-center rounded-l-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg'>Demo</button>
                             </a>
                             <a href="https://github.com/Danialezzat/Nextcent">
