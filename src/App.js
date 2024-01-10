@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Skills from "./components/Skills";
 import Work from "./components/Work";
+import CrispComponent from "./components/Crisp";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -17,6 +18,7 @@ function App() {
       <Skills isDarkMode={isDarkMode} />
       <Work isDarkMode={isDarkMode} />
       <Contact isDarkMode={isDarkMode} />
+      <CrispComponent />
     </div>
   );
 }
