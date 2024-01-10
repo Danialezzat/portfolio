@@ -20,30 +20,40 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
         </div>
 
         {/* my menu */}
-            <ul className='hidden md:flex'>
+            <ul className={`${isDarkMode ? 'text-black font-bold' : 'font-bold'} hidden md:flex`}>
                 <li>
                 <Link to="home" smooth={true} duration={500}>
-                Home
+                    <button class="before:ease relative h-12 w-24 overflow-hidden  transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700  hover:before:-translate-x-40">
+                        <span relative="relative z-10">Home</span>
+                    </button>
                 </Link>
                 </li>
                 <li>
                 <Link to="about" smooth={true} duration={500}>
-                About
+                <button class="before:ease relative h-12 w-24 overflow-hidden  transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700  hover:before:-translate-x-40">
+                    <span relative="relative z-10">About</span>
+                    </button>
                 </Link>
                 </li>
                 <li>
                 <Link to="skills" smooth={true} duration={500}>
-                Skills
+                <button class="before:ease relative h-12 w-24 overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700  hover:before:-translate-x-40">
+                    <span relative="relative z-10">Skills</span>
+                    </button>
                 </Link>
                 </li>
                 <li>
                 <Link to="work" smooth={true} duration={500}>
-                Work
+                <button class="before:ease relative h-12 w-24 overflow-hidden  transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700  hover:before:-translate-x-40">
+                    <span relative="relative z-10">Work</span>
+                    </button>
                 </Link>
                 </li>
                 <li>
                 <Link to="contact" smooth={true} duration={500}>
-                Contact
+                <button class="before:ease relative h-12 w-24 overflow-hidden  transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700  hover:before:-translate-x-40">
+                    <span relative="relative z-10">Contact</span>
+                    </button>
                 </Link>
                 </li>
             </ul>
@@ -51,11 +61,11 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
 
         {/* hamburger */}
         <div onClick={handleClick} className='md:hidden  z-10 '>
-            {!nav ? <FaBars /> : <FaTimes /> }
+            {!nav ? <FaBars className='text-black' /> : <FaTimes className='text-black' /> }
         </div>
 
         {/* Mobile Menu */}
-        <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center'}>
+        <ul className={`${!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center'} ${isDarkMode ? 'bg-[#efa35c] text-black' : 'bg-[#0a192f]'  }`}>
             <li className='py-6 text-4xl'>
             <Link onClick={handleClick} to="home" smooth={true} duration={500}>
                 Home
