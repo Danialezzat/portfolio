@@ -6,7 +6,7 @@ import DayNight from './DayNight';
 
 
 
-const Navbar = () => {
+const Navbar = ({setIsDarkMode, isDarkMode}) => {
     const [nav, setNav] = useState(false);
 
     const handleClick = () => setNav(!nav)
@@ -47,7 +47,7 @@ const Navbar = () => {
                 </li>
             </ul>
             {/* day and night toggle */}
-            <DayNight />
+            <DayNight isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
 
         {/* hamburger */}
         <div onClick={handleClick} className='md:hidden z-10'>
