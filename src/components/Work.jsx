@@ -9,11 +9,11 @@ import Netflix from '../assets/projects/netflix.png';
 
 const Work = ({isDarkMode}) => {
   return (
-    <div name='work' className={`${isDarkMode ? 'bg-[#6CB4EE] text-black' : 'bg-[#0a192f]' } w-full   text-gray-300 bg-[#0a192f]`}>
+    <div name='work' className={`${isDarkMode ? 'bg-[#eaf6f6] text-black' : 'bg-[#0a192f]' } w-full   text-gray-300 bg-[#0a192f]`}>
         <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
             <div className='pb-8'>
-                <p className='text-4xl font-bold inline border-b-4 text-gray-300 border-pink-600'>Work</p>
-                <p className='py-6'>Checkout some of me RECENT work</p>
+                <p className={`${isDarkMode ? 'text-[#9896f1]' : '' } text-4xl font-bold inline border-b-4 border-pink-600`}>Work</p>
+                <p className={`${isDarkMode ? 'text-black' : ''} py-4`}>Checkout some of me RECENT work</p>
             </div>
 
             <div className='grid lg:grid-cols-3 sm:grid-cols-1  md:grid-cols-2 gap-4'>
