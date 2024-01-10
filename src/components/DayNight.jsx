@@ -8,7 +8,7 @@ const DayNight = ({setIsDarkMode ,isDarkMode}) => {
     <div>
         <DayNightToggle
             onChange={() => setIsDarkMode(!isDarkMode)}
-            checked={isDarkMode}
+            checked={!isDarkMode}
         />
     </div>
   )
