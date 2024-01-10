@@ -2,19 +2,19 @@ import React from 'react';
 
 const About = ({isDarkMode}) => {
   return (
-    <div name='about' className={`${isDarkMode ? 'bg-[#6CB4EE] text-black' : 'bg-[#0a192f]' } w-full h-screen bg-[#0a192f] text-gray-300`}>
+    <div name='about' className={`${isDarkMode ? 'bg-[#eaf6f6]' : 'bg-[#0a192f]' } w-full h-screen bg-[#0a192f] text-gray-300`}>
         <div className='flex flex-col justify-center items-center w-full h-full'>
             <div className='max-w-[1000px] w-full  grid  grid-cols-2 gap-8'>
                 <div className='sm:text-right pb-8 pl-4'>
-                    <p className='text-4xl font-bold inline border-b-4 border-pink-600'>About</p>
+                    <p className={`${isDarkMode ? 'text-[#9896f1]' : '' } text-4xl font-bold inline border-b-4 border-pink-600`}>About</p>
                 </div>
             </div>
                 <div className='max-w-[1000px] w-full grid sm:grid-cols-2 gap-8 px-4'>
-                    <div className=' sm:text-right text-4xl font-bold '>
+                    <div className={`${isDarkMode ? 'text-[#6643b5]' : '' } sm:text-right text-4xl font-bold `}>
                         <p>Hi, I'am Daniel and nice to meet you please take a look around.</p>
                     </div>
                     <div>
-                        <p>
+                        <p className={`${isDarkMode ? 'text-[#6643b5]' : '' } font-bold`}>
                             I was born in a cold day of 1996,
                             I use to be a Radiology technician and I served in a hospital during the pandamic of COVID-19 .
                             as I always been intrested in coding and in technology I do always wanted to change my subject to computer science and guess what !?
