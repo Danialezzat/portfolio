@@ -13,7 +13,7 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
 
 
   return (
-    <div className={`${isDarkMode ? 'bg-[#efa35c]' : 'bg-[#0a192f]' } fixed w-full h-[80px] flex justify-between items-center px-4  text-gray-300`}>
+    <div className={`${isDarkMode ? 'bg-[#9896f1]' : 'bg-[#0a192f]' } fixed w-full h-[80px] flex justify-between items-center px-4  text-gray-300`}>
         <div >
             {/* day and night toggle */}
             <DayNight isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
@@ -65,7 +65,7 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
         </div>
 
         {/* Mobile Menu */}
-        <ul className={`${!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center'} ${isDarkMode ? 'bg-[#efa35c] text-black' : 'bg-[#0a192f]'  }`}>
+        <ul className={`${!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center'} ${isDarkMode ? 'bg-[#9896f1]' : 'bg-[#0a192f]'  }`}>
             <li className='py-6 text-4xl'>
             <Link onClick={handleClick} to="home" smooth={true} duration={500}>
                 Home

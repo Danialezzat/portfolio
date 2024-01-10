@@ -21,32 +21,32 @@ const Skills = ({isDarkMode}) => {
 
 
             <div className='w-full grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-center py-8'>
-                <div className={`${isDarkMode ? 'bg-[#efa35c]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
+                <div className={`${isDarkMode ? 'bg-[#9896f1]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
                     <img className='w-20 mx-auto' src={HTML} alt="HTML icon" />
                     <p className={`${isDarkMode ? 'text-black' : ''} py-4 font-semibold`}>HTML</p>
                 </div>
 
-                <div className={`${isDarkMode ? 'bg-[#efa35c]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
+                <div className={`${isDarkMode ? 'bg-[#9896f1]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
                     <img className='w-20 mx-auto' src={CSS} alt="CSS icon" />
                     <p className={`${isDarkMode ? 'text-black' : ''} py-4 font-semibold`}>CSS</p>
                 </div>
 
-                <div className={`${isDarkMode ? 'bg-[#efa35c]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
+                <div className={`${isDarkMode ? 'bg-[#9896f1]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
                     <img className='w-20 mx-auto' src={JavaScript} alt="javascript icon" />
                     <p className={`${isDarkMode ? 'text-black' : ''} py-4 font-semibold`}>JavaScript</p>
                 </div>
 
-                <div className={`${isDarkMode ? 'bg-[#efa35c]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
+                <div className={`${isDarkMode ? 'bg-[#9896f1]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
                     <img className='w-20 mx-auto' src={ReactImg} alt="react icon" />
                     <p className={`${isDarkMode ? 'text-black' : ''} py-4 font-semibold`}>React</p>
                 </div>
 
-                <div className={`${isDarkMode ? 'bg-[#efa35c]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
+                <div className={`${isDarkMode ? 'bg-[#9896f1]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
                     <img className='w-20 mx-auto' src={TailwindCSS} alt="tailwind icon" />
                     <p className={`${isDarkMode ? 'text-black' : ''} py-4 font-semibold`}>TailwindCSS</p>
                 </div>
 
-                <div className={`${isDarkMode ? 'bg-[#efa35c]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
+                <div className={`${isDarkMode ? 'bg-[#9896f1]' : ''} shadow-md shadow-[#040c16] hover:scale-110 duration-500 p-2`}>
                     <img className='w-20 mx-auto' src={GitHub} alt="github icon" />
                     <p className={`${isDarkMode ? 'text-black' : ''} py-4 font-semibold`}>GitHub</p>
                 </div>

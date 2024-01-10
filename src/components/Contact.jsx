@@ -20,11 +20,11 @@ const Contact = ({isDarkMode}) => {
           <div className='w-full  grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 text-center py-8'>
                   
 
-                  <div className={`${isDarkMode ? 'bg-[#efa35c]' : ''} py-4 shadow-md shadow-[#040c16] hover:scale-90 duration-500`}>
+                  <div className={`${isDarkMode ? 'bg-[#9896f1]' : ''} py-4 shadow-md shadow-[#040c16] hover:scale-90 duration-500`}>
                       <img className='w-8 mx-auto' src={GitHub} alt="github icon" />
                         <a className={`${isDarkMode ? 'text-black' : 'text-white'} py-4`} href="https://github.com/Danialezzat?tab=repositories" target='_blanck'>GitHub</a>
                   </div>
-                  <div className={`${isDarkMode ? 'bg-[#efa35c]' : ''} py-4 shadow-md shadow-[#040c16] hover:scale-90 duration-500`}>
+                  <div className={`${isDarkMode ? 'bg-[#9896f1]' : ''} py-4 shadow-md shadow-[#040c16] hover:scale-90 duration-500`}>
                       <img className='w-8 mx-auto' src={LinkedIn} alt="github icon" />
                         <a className={`${isDarkMode ? 'text-black' : 'text-white'} py-4`} href="https://www.linkedin.com/in/daniel-ezzatmadar-554736197" target='_blanck'>LinkedIn</a>
                   </div>
