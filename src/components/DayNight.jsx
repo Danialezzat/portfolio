@@ -6,7 +6,7 @@ const DayNight = ({setIsDarkMode ,isDarkMode}) => {
 
   return (
     <div>
-        <DayNightToggle
+        <DayNightToggle 
             onChange={() => setIsDarkMode(!isDarkMode)}
             checked={!isDarkMode}
         />

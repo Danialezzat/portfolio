@@ -13,9 +13,10 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
 
 
   return (
-    <div className={`${isDarkMode ? 'bg-[#6CB4EE] text-black' : 'bg-[#0a192f]' } fixed w-full h-[80px] flex justify-around items-center px-4 bg-[#0a192f] text-gray-300`}>
-        <div className='font-bold text-2xl'>
-{/* there could be a Logo here */} Welcome
+    <div className={`${isDarkMode ? 'bg-[#efa35c] text-black' : 'bg-[#0a192f]' } fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300`}>
+        <div >
+            {/* day and night toggle */}
+            <DayNight isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
         </div>
 
         {/* my menu */}
@@ -46,12 +47,11 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
                 </Link>
                 </li>
             </ul>
-            {/* day and night toggle */}
-            <DayNight isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
+            
 
         {/* hamburger */}
-        <div onClick={handleClick} className='md:hidden z-10'>
-            {!nav ? <FaBars /> : <FaTimes />}
+        <div onClick={handleClick} className='md:hidden  z-10 '>
+            {!nav ? <FaBars /> : <FaTimes /> }
         </div>
 
         {/* Mobile Menu */}
