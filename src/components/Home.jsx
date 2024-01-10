@@ -4,7 +4,7 @@ import { HiArrowNarrowRight } from 'react-icons/hi'
 
 const Home = ({isDarkMode}) => {
   return (
-    <div name='home' className={`${isDarkMode ? 'bg-[#6CB4EE] text-black' : 'bg-[#0a192f]' } bg-[#0a192f] w-full h-screen`}>
+    <div name='home' className={`${isDarkMode ? 'bg-[#eaf6f6] text-black' : 'bg-[#0a192f]' } bg-[#0a192f] w-full h-screen`}>
 
         {/* container */}
         <div className='max-w-[1000px] mx-auto px-10 flex flex-col justify-center h-full'>
@@ -15,7 +15,7 @@ const Home = ({isDarkMode}) => {
 
             <div>
                 
-                <button className='text-white group border-2 px-6 py-3 my-2 flex items-center hover:bg-pink-600 hover:border-pink-600'>
+                <button className={`${isDarkMode ? 'font-black' : 'text-white'}  group border-2 px-6 py-3 my-2 flex items-center hover:bg-pink-600 hover:border-pink-600`}>
                 <Link to="skills" smooth={true} duration={500}>
                 view work
                 </Link>
