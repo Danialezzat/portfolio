@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-scroll';
 import { HiArrowNarrowRight } from 'react-icons/hi'
 
-const Home = () => {
+const Home = ({isDarkMode}) => {
   return (
-    <div name='home' className='bg-[#0a192f] w-full h-screen'>
+    <div name='home' className={`${isDarkMode ? 'bg-[#6CB4EE] text-black' : 'bg-[#0a192f]' } bg-[#0a192f] w-full h-screen`}>
 
         {/* container */}
         <div className='max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full'>

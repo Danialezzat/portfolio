@@ -3,9 +3,9 @@ import GitHub from '../assets/github.png'
 import LinkedIn from '../assets/linkedin.png'
 
 
-const Contact = () => {
+const Contact = ({isDarkMode}) => {
   return (
-    <div name='contact' className='w-full bg-[#0a192f] flex justify-center items-center flex-col p-4'>
+    <div name='contact' className={`${isDarkMode ? 'bg-[#6CB4EE] text-black-600' : 'bg-[#0a192f]' } w-full bg-[#0a192f] flex justify-center items-center flex-col p-4`}>
         <form method='POST' action="https://getform.io/f/dabafa22-8310-4e87-a6fe-cf1b0cef4fc1" className='flex flex-col max-w-[600px] w-full'>
             <div className='pb-8 '>
                 <p className='text-4xl font-bold inline border-b-4 border-pink-600 text-gray-300'>Contact</p>

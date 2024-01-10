@@ -8,9 +8,9 @@ import GitHub from '../assets/github.png'
 import TailwindCSS from '../assets/tailwind.png'
 
 
-const Skills = () => {
+const Skills = ({isDarkMode}) => {
   return (
-    <div name='skills' className='w-full   bg-[#0a192f] text-gray-300'>
+    <div name='skills' className={`${isDarkMode ? 'bg-[#6CB4EE] text-black' : 'bg-[#0a192f]' } w-full   bg-[#0a192f] text-gray-300`}>
 
         {/* container */}
         <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>

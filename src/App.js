@@ -7,16 +7,16 @@ import Skills from "./components/Skills";
 import Work from "./components/Work";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   return (
-    <div className={`${isDarkMode ? 'bg-[#6CB4EE]' : ''} App flex flex-col justify-between items-center w-full`}>
+    <div className= 'App flex flex-col justify-between items-center w-full'>
       <Navbar setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />
-      <Home />
-      <About />
-      <Skills />
-      <Work />
-      <Contact />
+      <Home isDarkMode={isDarkMode} />
+      <About isDarkMode={isDarkMode} />
+      <Skills isDarkMode={isDarkMode} />
+      <Work isDarkMode={isDarkMode} />
+      <Contact isDarkMode={isDarkMode} />
     </div>
   );
 }

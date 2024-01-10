@@ -13,7 +13,7 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
 
 
   return (
-    <div className='fixed w-full h-[80px] flex justify-around items-center px-4 bg-[#0a192f] text-gray-300'>
+    <div className={`${isDarkMode ? 'bg-[#6CB4EE] text-black' : 'bg-[#0a192f]' } fixed w-full h-[80px] flex justify-around items-center px-4 bg-[#0a192f] text-gray-300`}>
         <div className='font-bold text-2xl'>
 {/* there could be a Logo here */} Welcome
         </div>
