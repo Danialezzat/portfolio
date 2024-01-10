@@ -11,7 +11,7 @@ const Navbar = () => {
 
 
   return (
-    <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300'>
+    <div className='fixed w-full h-[80px] flex justify-around items-center px-4 bg-[#0a192f] text-gray-300'>
         <div className='font-bold text-2xl'>
 {/* there could be a Logo here */} Welcome
         </div>
