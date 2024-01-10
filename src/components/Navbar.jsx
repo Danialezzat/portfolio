@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { Link } from 'react-scroll';
-import DayNightToggle from 'react-day-and-night-toggle';
+import DayNight from './DayNight';
+
 
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
 
     const handleClick = () => setNav(!nav)
 
@@ -47,12 +47,7 @@ const Navbar = () => {
                 </li>
             </ul>
             {/* day and night toggle */}
-            <div>
-                <DayNightToggle
-                    onChange={() => setIsDarkMode(!isDarkMode)}
-                    checked={isDarkMode}
-                />
-            </div>
+            <DayNight />
 
         {/* hamburger */}
         <div onClick={handleClick} className='md:hidden z-10'>
