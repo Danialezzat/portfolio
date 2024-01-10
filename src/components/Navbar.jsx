@@ -13,7 +13,7 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
 
 
   return (
-    <div className={`${isDarkMode ? 'bg-[#efa35c] text-black' : 'bg-[#0a192f]' } fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300`}>
+    <div className={`${isDarkMode ? 'bg-[#efa35c]' : 'bg-[#0a192f]' } fixed w-full h-[80px] flex justify-between items-center px-4  text-gray-300`}>
         <div >
             {/* day and night toggle */}
             <DayNight isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
