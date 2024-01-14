@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Crisp } from "crisp-sdk-web";
 
 const CrispComponent = () => {
@@ -6,9 +6,7 @@ const CrispComponent = () => {
 
 
 
-  return (
-    <div>CrispComponent</div>
-  )
+  
 }
 
 export default CrispComponent
