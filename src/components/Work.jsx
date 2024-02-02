@@ -16,14 +16,14 @@ const Work = ({isDarkMode}) => {
                 <p className={`${isDarkMode ? 'text-black' : ''} py-4`}>Checkout some of me RECENT work</p>
             </div>
 
-            <div className='grid lg:grid-cols-3 sm:grid-cols-1  md:grid-cols-2 gap-4'>
+            <div className='grid lg:grid-cols-3 sm:grid-cols-1  md:grid-cols-2 gap-4 z-0'>
 
 
 
                 {/* grid item */}
                 <div 
                     style={{ backgroundImage: `url(${Netflix})`}}
-                    className='shadow-lg shadow-[#040c16] group container  rounded-md flex justify-center items-center mx-auto  content-div '>
+                    className='shadow-lg shadow-[#040c16] group container  rounded-md flex justify-center items-center mx-auto  content-div'>
 
 
                     {/* hover effect */}
