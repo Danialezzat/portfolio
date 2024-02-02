@@ -60,12 +60,12 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
             
 
         {/* hamburger */}
-        <div onClick={handleClick} className="md:hidden  z-1">
-            {!nav ? <FaBars className={`${isDarkMode ? 'text-black' : ' text-white ' } md:hidden  z-10`} /> : <FaTimes className={`${isDarkMode ? 'text-black' : ' text-white ' } md:hidden  z-10`} /> }
+        <div onClick={handleClick} className="md:hidden  z-10 cursor-pointer">
+            {!nav ? <FaBars className={`${isDarkMode ? 'text-black' : ' text-white ' }`} /> : <FaTimes className={`${isDarkMode ? 'text-black' : ' text-white ' }`} /> }
         </div>
 
         {/* Mobile Menu */}
-        <ul className={`${!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center'} ${isDarkMode ? 'bg-[#9896f1] text-white' : 'bg-[#0a192f]'  }`}>
+        <ul className={`md:hidden z-0 ${!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center'} ${isDarkMode ? 'bg-[#9896f1] text-white' : 'bg-[#0a192f]'}`}>
             <li className='py-6 text-4xl'>
             <Link onClick={handleClick} to="home" smooth={true} duration={500}>
                 Home
