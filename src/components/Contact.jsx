@@ -14,7 +14,7 @@ const Contact = ({isDarkMode}) => {
             <input className='bg-[#ccd6f6] p-2' type="text" placeholder='Name' name='name' />
             <input className='my-4 p-2 bg-[#ccd6f6]'  type="email" placeholder='Email' name='email' />
             <textarea className='bg-[#ccd6f6] p-2' name="message" id=""  rows="10" placeholder='Message'></textarea>
-            <button className='text-black font-semibold border-2 hover:bg-pink-600 hover:border-pink-600 px-4 py-3 my-8 flex justify-center items-center'>Let's Collaborate</button>
+            <button className={`${isDarkMode ? 'text-black' : 'text-white'}  font-semibold border-2 hover:bg-pink-600 hover:border-pink-600 px-4 py-3 my-8 flex justify-center items-center`}>Let's Collaborate</button>
         </form>
 
           <div className='w-full  grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 text-center py-8'>
