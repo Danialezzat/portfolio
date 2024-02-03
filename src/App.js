@@ -10,13 +10,14 @@ import Secssions from "./components/Secssions";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isAuth, setIsAuth] = useState(false)
 
   return (
     <Router>
         <Routes>
             <Route path='/bloghome' element={<BlogHome />} >
               <Route path='/bloghome/createpost' element={<CreatePost />} />
-              <Route path='/bloghome/bliglogin' element={<BlogLogin />} />
+              <Route path='/bloghome/bliglogin' element={<BlogLogin  setIsAuth={setIsAuth} />} />
             </Route>
             <Route path='/portfolio' element={<Secssions isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
         </Routes>

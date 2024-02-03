@@ -4,7 +4,7 @@ import { Outlet,Link } from 'react-router-dom';
 const BlogHome = () => {
   return (
     <div>
-      <nav>
+      <nav className='border border-black'>
         <Link to='/bloghome' >Home</Link>
         <Link to='/bloghome/createpost' >Create Post</Link>
         <Link to='/bloghome/bliglogin' >Login</Link>
