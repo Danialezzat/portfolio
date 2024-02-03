@@ -14,9 +14,10 @@ function App() {
   return (
     <Router>
         <Routes>
-            <Route path='/bloghome' element={<BlogHome />} />
-            <Route path='/createpost' element={<CreatePost />} />
-            <Route path='/bliglogin' element={<BlogLogin />} />
+            <Route path='/bloghome' element={<BlogHome />} >
+              <Route path='/bloghome/createpost' element={<CreatePost />} />
+              <Route path='/bloghome/bliglogin' element={<BlogLogin />} />
+            </Route>
             <Route path='/portfolio' element={<Secssions isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
         </Routes>
     </Router>
