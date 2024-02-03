@@ -1,25 +1,25 @@
 import { useState } from "react";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Home from "./components/Home";
-import Navbar from "./components/Navbar";
-import Skills from "./components/Skills";
-import Work from "./components/Work";
-import CrispComponent from "./components/Crisp";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; 
+import BlogHome from './blog/pages/BlogHome';
+import CreatePost from './blog/pages/CreatePost';
+import BlogLogin from './blog/pages/BlogLogin';
+import Secssions from "./components/Secssions";
+
+
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   return (
-    <div className= 'App flex flex-col justify-between items-center w-full'>
-      <Navbar setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />
-      <Home isDarkMode={isDarkMode} />
-      <About isDarkMode={isDarkMode} />
-      <Skills isDarkMode={isDarkMode} />
-      <Work isDarkMode={isDarkMode} />
-      <Contact isDarkMode={isDarkMode} />
-      <CrispComponent />
-    </div>
+    <Router>
+        <Routes>
+            <Route path='/bloghome' element={<BlogHome />} />
+            <Route path='/createpost' element={<CreatePost />} />
+            <Route path='/bliglogin' element={<BlogLogin />} />
+            <Route path='/portfolio' element={<Secssions isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
+        </Routes>
+    </Router>
   );
 }
 
