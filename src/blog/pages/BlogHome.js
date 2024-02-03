@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet,Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase-config';
+import Button from './Button';
 
 const BlogHome = ({isAuth, setIsAuth}) => {
 
@@ -22,7 +23,7 @@ const BlogHome = ({isAuth, setIsAuth}) => {
       <nav className='border border-black p-4'>
         <Link to='/bloghome' >Home</Link>
         <Link to='/bloghome/createpost' >Create Post</Link>
-        {!isAuth ? <Link to='/bloghome/bloglogin' >Login</Link> : <button onClick={signUserOut}>Log Out</button>}
+        {!isAuth ? <Link to='/bloghome/bloglogin' >Login</Link> : <Button signUserOut={signUserOut}/>}
         <Link to='/portfolio' >Portfolio</Link>
       </nav>
       <h1>
