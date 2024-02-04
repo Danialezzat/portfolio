@@ -11,7 +11,7 @@ import BlogPosts from "./blog/pages/BlogPosts";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"))
 
   return (
     <Router>
