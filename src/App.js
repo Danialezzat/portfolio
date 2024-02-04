@@ -5,6 +5,7 @@ import BlogHome from './blog/pages/BlogHome';
 import CreatePost from './blog/pages/CreatePost';
 import BlogLogin from './blog/pages/BlogLogin';
 import Secssions from "./components/Secssions";
+import BlogPosts from "./blog/pages/BlogPosts";
 
 
 
@@ -16,6 +17,7 @@ function App() {
     <Router>
         <Routes>
             <Route path='/bloghome' element={<BlogHome isAuth={isAuth} setIsAuth={setIsAuth} />} >
+              <Route index element={<BlogPosts isAuth={isAuth} setIsAuth={setIsAuth} />} />
               <Route path='/bloghome/createpost' element={<CreatePost isAuth={isAuth} />} />
               <Route path='/bloghome/bloglogin' element={<BlogLogin  setIsAuth={setIsAuth}  />} />
             </Route>
