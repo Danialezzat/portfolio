@@ -13,7 +13,7 @@ const BlogPosts = ({isAuth, setIsAuth}) => {
     };
 
     getPosts();
-  });
+  },[]);
 
   const deletePost = async (id) => {
     const postDoc = doc(db, "post", id)
