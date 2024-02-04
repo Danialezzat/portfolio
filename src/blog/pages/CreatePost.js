@@ -1,8 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { addDoc, collection } from 'firebase/firestore'
+import { auth, db } from '../../firebase-config';
+import { useNavigate } from 'react-router-dom';
 
-const CreatePost = () => {
+const CreatePost = ({isAuth}) => {
+  const navigate = useNavigate()
+
   const [title, setTitle] = useState("")
   const [postText, setPostText] = useState("")
+
+
+  const postsCollectionRef = collection(db, "post")
+
+  const createPost = async () => {
+    await addDoc(postsCollectionRef, {title: title,postText: postText, author: {name: auth.currentUser.displayName , id: auth.currentUser.uid}});
+    navigate('/bloghome')
+  }
+
+  useEffect(() => {
+    if (!isAuth) {
+      navigate('/bloghome/bloglogin')
+    }
+  },[])
 
 
 
@@ -18,7 +37,7 @@ const CreatePost = () => {
         <label htmlFor="post">post</label>
         <textarea name="" id="post" placeholder='Write here...' onChange={(event) => {setPostText(event.target.value)}} ></textarea>
         </div>
-        <button>Submit post</button>
+        <button onClick={createPost}>Submit post</button>
       </div>
     </div>
   )

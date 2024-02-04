@@ -22,8 +22,13 @@ const BlogHome = ({isAuth, setIsAuth}) => {
     <div>
       <nav className='border border-black p-4'>
         <Link to='/bloghome' >Home</Link>
-        <Link to='/bloghome/createpost' >Create Post</Link>
-        {!isAuth ? <Link to='/bloghome/bloglogin' >Login</Link> : <Button signUserOut={signUserOut}/>}
+        {!isAuth ? <Link to='/bloghome/bloglogin' >Login</Link> : (
+          <>
+            <Link to='/bloghome/createpost' >Create Post</Link>
+            <Button signUserOut={signUserOut}/>
+          </>
+          )
+          }
         <Link to='/portfolio' >Portfolio</Link>
       </nav>
       <h1>
