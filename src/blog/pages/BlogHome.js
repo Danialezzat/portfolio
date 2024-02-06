@@ -3,7 +3,7 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase-config';
 import Button from './Button';
 
-const BlogHome = ({isAuth, setIsAuth}) => {
+const BlogHome = ({isAuth, setIsAuth, isDarkMode}) => {
   
 
   let navigate = useNavigate()
@@ -20,8 +20,8 @@ const BlogHome = ({isAuth, setIsAuth}) => {
 
   return (
     <>
-      <div>
-        <nav className='border border-black p-4'>
+      <div className={`${isDarkMode ? 'bg-[#eaf6f6] text-black' : 'bg-[#0a192f]' } bg-[#0a192f] w-full h-screen`}>
+        <nav className='py-10'>
           <Link to='/bloghome' >Home</Link>
           {!isAuth ? <Link to='/bloghome/bloglogin' >Login</Link> : (
             <>
@@ -30,11 +30,11 @@ const BlogHome = ({isAuth, setIsAuth}) => {
             </>
             )
             }
-          <Link to='/portfolio' >Portfolio</Link>
+          <Link to='/' >Portfolio</Link>
         </nav>
 
-        <Outlet />
         
+        <Outlet />
       </div>
       
     </>

@@ -16,9 +16,9 @@ function App() {
   return (
     <Router>
         <Routes>
-            <Route path='/bloghome' element={<BlogHome isAuth={isAuth} setIsAuth={setIsAuth} />} >
+            <Route path='/bloghome' element={<BlogHome isAuth={isAuth} setIsAuth={setIsAuth} isDarkMode={isDarkMode} />} >
               <Route index element={<BlogPosts isAuth={isAuth} setIsAuth={setIsAuth} />} />
-              <Route path='/bloghome/createpost' element={<CreatePost isAuth={isAuth} />} />
+              <Route path='/bloghome/createpost' element={<CreatePost isAuth={isAuth} isDarkMode={isDarkMode} /> } />
               <Route path='/bloghome/bloglogin' element={<BlogLogin  setIsAuth={setIsAuth}  />} />
             </Route>
             <Route path='/' element={<Secssions isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />

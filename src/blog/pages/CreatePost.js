@@ -3,7 +3,7 @@ import { addDoc, collection } from 'firebase/firestore'
 import { auth, db } from '../../firebase-config';
 import { useNavigate } from 'react-router-dom';
 
-const CreatePost = ({isAuth}) => {
+const CreatePost = ({isAuth, isDarkMode}) => {
   const navigate = useNavigate()
 
   const [title, setTitle] = useState("")
@@ -26,7 +26,7 @@ const CreatePost = ({isAuth}) => {
 
 
   return (
-    <div>
+    <div className={`${isDarkMode ? 'bg-[#eaf6f6] text-black' : 'bg-[#0a192f]' } w-full h-screen`}>
       <div>
         <h1>Create a Post</h1>
         <div className='inputGroup'>
