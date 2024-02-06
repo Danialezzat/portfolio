@@ -21,7 +21,7 @@ function App() {
               <Route path='/bloghome/createpost' element={<CreatePost isAuth={isAuth} />} />
               <Route path='/bloghome/bloglogin' element={<BlogLogin  setIsAuth={setIsAuth}  />} />
             </Route>
-            <Route path='/portfolio' element={<Secssions isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
+            <Route path='/' element={<Secssions isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
         </Routes>
     </Router>
   );
