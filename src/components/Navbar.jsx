@@ -3,11 +3,13 @@ import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { Link } from 'react-scroll';
 import DayNight from './DayNight';
-
+import { useNavigate } from 'react-router-dom';
+import BlogButton from './BlogButton';
 
 
 const Navbar = ({setIsDarkMode, isDarkMode}) => {
     const [nav, setNav] = useState(false);
+    const navigate = useNavigate()
 
     const handleClick = () => setNav(!nav)
 
@@ -56,6 +58,9 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
                     </button>
                 </Link>
                 </li>
+                <li onClick={() => {navigate('./BlogHome')}}>
+                    <BlogButton />
+                </li>
             </ul>
             
 
@@ -90,6 +95,9 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
             <Link onClick={handleClick} to="contact" smooth={true} duration={500}>
                 Contact
             </Link>
+            </li>
+            <li onClick={() => {navigate('./BlogHome')}}>
+                <BlogButton />
             </li>
         </ul>
 
