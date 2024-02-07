@@ -21,7 +21,7 @@ const CreatePost = ({isAuth, isDarkMode}) => {
     if (!isAuth) {
       navigate('/bloghome/bloglogin')
     }
-  },[])
+  },[isAuth, navigate])
 
   
   return (
