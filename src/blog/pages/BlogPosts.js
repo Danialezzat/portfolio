@@ -2,7 +2,7 @@ import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore'; // del
 import React, { useEffect, useState } from 'react'
 import { auth, db } from '../../firebase-config'; //auth
 
-const BlogPosts = ({isAuth, setIsAuth}) => {
+const BlogPosts = ({isAuth, setIsAuth, isDarkMode}) => {
   const [postLists, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "post");
 
@@ -13,7 +13,7 @@ const BlogPosts = ({isAuth, setIsAuth}) => {
     };
 
     getPosts();
-  },[]);
+  },[postLists]);
 
   const deletePost = async (id) => {
     const postDoc = doc(db, "post", id);
@@ -22,20 +22,20 @@ const BlogPosts = ({isAuth, setIsAuth}) => {
 
 
   return (
-    <div>
+    <div className='h-screen w-full flex flex-col justify-start items-center '>
             {postLists.map((post) => {
               return(
-              <div key={post.id} className='text-black font-semi'>
+              <div className='shadow-lg border rounded-md mt-10 w-[500px] ' key={post.id} >
                             <div className='post-header'>
-                                <div className='title'>
+                                <div className={`${isDarkMode ? 'bg-[#9896f1]' : 'bg-[#0a192f]' }  w-full h-[80px] flex justify-between items-center px-4 rounded-t-md   z-10 font-semibold`}>
                                     <h1>{post.title}</h1>
-                                </div>
-                                <div className='deltepost'>
-                                    {isAuth && post.author.id === auth.currentUser.uid && <button onClick={() => deletePost(post.id)} >&#128465;</button>}
+                                    <div className='bg-[#9896f1] p-2'>
+                                        {isAuth && post.author.id === auth.currentUser.uid && <button className='bg-[#9896f1]' onClick={() => deletePost(post.id)} >&#10005;</button>}
+                                    </div>
                                 </div>
                             </div>
-                            <div className='postTextContainer'>{post.postText}</div>
-                            <h3>@{post.author.name}</h3>
+                            <div className='bg-[#ccd6f6] p-2 font-semibold '>{post.postText}</div>
+                            <h3 className='bg-[#ccd6f6] p-2'>@{post.author.name}</h3>
               </div>)
             })}
     </div>

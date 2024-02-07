@@ -20,8 +20,8 @@ const BlogHome = ({isAuth, setIsAuth, isDarkMode}) => {
 
   return (
     <>
-      <div className={`${isDarkMode ? 'bg-[#eaf6f6] text-black' : 'bg-[#0a192f]' } bg-[#0a192f] w-full h-screen`}>
-        <nav className='py-10'>
+      <div className={`${isDarkMode ? 'bg-[#eaf6f6] text-black' : 'bg-[#0a192f] text-white' } bg-[#0a192f] w-full  `}>
+        <nav className={`${isDarkMode ? 'bg-[#9896f1]' : 'bg-[#0a192f]' }  w-full h-[80px] flex justify-between items-center px-4   z-10 font-semibold`}>
           <Link to='/bloghome' >Home</Link>
           {!isAuth ? <Link to='/bloghome/bloglogin' >Login</Link> : (
             <>

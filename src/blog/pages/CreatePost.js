@@ -23,21 +23,18 @@ const CreatePost = ({isAuth, isDarkMode}) => {
     }
   },[])
 
-
-
+  
   return (
-    <div className={`${isDarkMode ? 'bg-[#eaf6f6] text-black' : 'bg-[#0a192f]' } w-full h-screen`}>
-      <div>
-        <h1>Create a Post</h1>
-        <div className='inputGroup'>
-          <label htmlFor="title">Title</label>
-          <input id='title' type="text" placeholder='Title...' onChange={(event) => {setTitle(event.target.value)}} />
+    <div className='h-screen w-full flex flex-col justify-cneter items-center '>
+      <div className='h-screen w-full flex flex-col justify-center items-center '>
+        <h1 className={`${isDarkMode ? 'bg-[#9896f1]' : 'bg-[#0a192f] border' }  w-[50%] h-[80px] flex justify-center items-center px-4 rounded-t-md   z-10 font-semibold`}>Create a Post</h1>
+        <div className='bg-[#ccd6f6] p-2 w-[50%]'>
+          <input className='bg-[#ccd6f6] text-black w-full outline-none' id='title' type="text" placeholder='Title...' onChange={(event) => {setTitle(event.target.value)}} />
         </div>
-        <div className='inputGroup'>
-        <label htmlFor="post">post</label>
-        <textarea name="" id="post" placeholder='Write here...' onChange={(event) => {setPostText(event.target.value)}} ></textarea>
+        <div className='bg-[#ccd6f6] p-2 w-[50%]'>
+          <textarea className='bg-[#ccd6f6] text-black w-full  outline-none' name="" id="post" placeholder='Write here...' onChange={(event) => {setPostText(event.target.value)}} ></textarea>
         </div>
-        <button onClick={createPost}>Submit post</button>
+        <button className={`${isDarkMode ? 'bg-[#9896f1]' : 'bg-[#0a192f] border' }  w-[50%] h-[80px] flex justify-center items-center px-4 rounded-b-md   z-10 font-semibold`} onClick={createPost}>Submit post</button>
       </div>
     </div>
   )
