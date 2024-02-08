@@ -27,7 +27,7 @@ const Home = ({isDarkMode}) => {
                     <HiArrowNarrowRight  className='ml-3'/>
                 </span>
                 </button>
-                <div onClick={() => {navigate('./BlogHome')}}>
+                <div className='mt-2' onClick={() => {navigate('./BlogHome')}}>
                   <BlogButton   />
                 </div>
             </div>
