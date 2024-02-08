@@ -11,9 +11,10 @@ const BlogPosts = ({isAuth, setIsAuth, isDarkMode}) => {
       const data = await getDocs(postsCollectionRef);
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id})));
     };
- console.log('repeated')
+    console.log('repeated')
     getPosts();
-  },[postLists, postsCollectionRef]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[postLists]);
 
   const deletePost = async (id) => {
     const postDoc = doc(db, "post", id);
