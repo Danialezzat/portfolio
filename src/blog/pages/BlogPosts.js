@@ -11,7 +11,7 @@ const BlogPosts = ({isAuth, setIsAuth, isDarkMode}) => {
       const data = await getDocs(postsCollectionRef);
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id})));
     };
-
+ console.log('repeated')
     getPosts();
   },[postLists, postsCollectionRef]);
 
