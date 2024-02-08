@@ -25,9 +25,9 @@ const BlogPosts = ({isAuth, setIsAuth, isDarkMode}) => {
     <div className='h-screen w-full flex flex-col justify-start items-center '>
             {postLists.map((post) => {
               return(
-              <div className='shadow-lg border rounded-md mt-10 w-[500px] ' key={post.id} >
+              <div className='shadow-lg border rounded-md mt-10 w-[400px] sm:w-full ' key={post.id} >
                             <div className='post-header'>
-                                <div className={`${isDarkMode ? 'bg-[#9896f1]' : 'bg-[#0a192f]' }  w-full h-[80px] flex justify-between items-center px-4 rounded-t-md   z-10 font-semibold`}>
+                                <div className={`${isDarkMode ? 'bg-[#9896f1]' : 'bg-[#0a192f]' }  w-full h-[80px] flex justify-between items-center px-4 rounded-t-md   z-10 font-semibold md:w-full`}>
                                     <h1>{post.title}</h1>
                                     <div className='bg-[#9896f1] p-2'>
                                         {isAuth && post.author.id === auth.currentUser.uid && <button className='bg-[#9896f1]' onClick={() => deletePost(post.id)} >&#10005;</button>}
