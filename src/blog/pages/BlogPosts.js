@@ -41,7 +41,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
                 }`}>
                   {isAuth && post.author.id === auth.currentUser.uid && (
                     <button
-                      cclassName={`${
+                      className={`${
                         isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
                       }`}
                       onClick={() => deletePost(post.id)}
