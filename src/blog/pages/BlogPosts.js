@@ -36,7 +36,6 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
                 }  w-full h-[80px] flex justify-between items-center px-4 rounded-t-md   z-10 font-semibold md:w-full`}
               >
                 <h1 className="font-semibold">{post.title}</h1>
-                <h1>{post.createdAt.toDate().toDateString()}</h1>
                 <div className="bg-[#9896f1] p-2">
                   {isAuth && post.author.id === auth.currentUser.uid && (
                     <button
@@ -52,7 +51,10 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
             <div className="bg-[#ccd6f6] p-2 font-semibold ">
               {post.postText}
             </div>
-            <h3 className="bg-[#ccd6f6] p-2">@{post.author.name}</h3>
+            <div className="flex flex-row bg-[#ccd6f6] p-2">
+              <h3 className=" font-semibold">@{post.author.name}</h3> . 
+              <h6>({post.createdAt.toDate().toDateString()})</h6>
+            </div>
           </div>
         );
       })}
