@@ -36,10 +36,14 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
                 }  w-full h-[80px] flex justify-between items-center px-4 rounded-t-md   z-10 font-semibold md:w-full`}
               >
                 <h1 className="font-semibold">{post.title}</h1>
-                <div className="bg-[#9896f1] p-2">
+                <div className={`${
+                  isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
+                }`}>
                   {isAuth && post.author.id === auth.currentUser.uid && (
                     <button
-                      className="bg-[#9896f1]"
+                      cclassName={`${
+                        isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
+                      }`}
                       onClick={() => deletePost(post.id)}
                     >
                       &#10005;

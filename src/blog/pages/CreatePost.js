@@ -48,7 +48,7 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
         <div className="h-screen w-full flex flex-col justify-center items-center ">
           <h1
             className={`${
-              isDarkMode ? "bg-hero-lgiht" : "bg-hero-dark border"
+              isDarkMode ? "bg-[#eaf6f6]" : "bg-[#0a192f] border"
             }  w-[50%] h-[80px] flex justify-center items-center px-4 rounded-t-md   z-10 font-semibold`}
           >
             Create a Post

@@ -18,7 +18,7 @@ const BlogHome = ({ isAuth, setIsAuth, isDarkMode }) => {
     <>
       <div
         className={`${
-          isDarkMode ? " bg-hero-light text-black" : " bg-hero-dark text-white"
+          isDarkMode ? " bg-[#eaf6f6] text-black" : " bg-[#0a192f] text-white"
         } bg-[#0a192f] bg-cover w-full  `}
       >
         <nav
