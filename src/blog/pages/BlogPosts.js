@@ -35,7 +35,8 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
                   isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
                 }  w-full h-[80px] flex justify-between items-center px-4 rounded-t-md   z-10 font-semibold md:w-full`}
               >
-                <h1>{post.title}</h1>
+                <h1 className="font-semibold">{post.title}</h1>
+                <h1>{post.createdAt.toDate().toDateString()}</h1>
                 <div className="bg-[#9896f1] p-2">
                   {isAuth && post.author.id === auth.currentUser.uid && (
                     <button

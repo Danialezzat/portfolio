@@ -29,9 +29,11 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
       title: formData.title,
       postText: formData.context,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
+      createdAt: new Date()
     });
     navigate("/bloghome");
   };
+  console.log(postsCollectionRef)
 
   useEffect(() => {
     if (!isAuth) {
