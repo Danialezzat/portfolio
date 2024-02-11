@@ -24,14 +24,14 @@ const BlogHome = ({ isAuth, setIsAuth, isDarkMode }) => {
         <nav
           className={`${
             isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
-          }  w-full h-[80px] flex justify-between items-center px-4   z-10 font-semibold`}
+          }  w-full h-[80px] flex justify-between items-center px-4   z-10 font-semibold fixed top-0`}
         >
           <Link to="/bloghome">Home</Link>
-          <Link to="/bloghome/createpost">Create Post</Link>
           {!isAuth ? (
             <Link to="/bloghome/bloglogin">Login</Link>
-          ) : (
-            <>
+            ) : (
+              <>
+              <Link to="/bloghome/createpost">Create Post</Link>
               <Button signUserOut={signUserOut} />
             </>
           )}
