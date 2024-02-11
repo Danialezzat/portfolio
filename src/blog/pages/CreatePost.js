@@ -83,8 +83,8 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
             Create a Post
           </h1>
           <div
-            className="w-full relative before:absolute before:content-['Title...'] before:font-semibold 
-            before:top-[10px] before:left-[10px] focus-within:before:font-bold focus-within:before:top-[-15px]  focus-within:before:bg-white before:duration-300 border border-[#adadad] rounded-lg"
+            className={`${formData.title ? 'before:font-bold befor:absolute before:top-[-16px] before:bg-white' : ''} w-full relative before:absolute before:content-['Title...'] before:font-semibold 
+            before:top-[10px] before:left-[10px] focus-within:before:font-bold focus-within:before:top-[-16px]  focus-within:before:bg-white before:duration-300 border border-[#adadad] rounded-lg`}
           >
             <input
               className="w-full h-[40px] p-2 rounded-lg mb-6 outline-none "
@@ -96,9 +96,9 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
               required
             />
           </div>
-          <div className="w-full relative    before:absolute before:content-['write_here...'] before:font-semibold focus-within:before:font-bold
+          <div className={`${formData.context ? 'before:font-bold befor:absolute before:top-[-16px] before:bg-white' : ''} w-full relative    before:absolute before:content-['write_here...'] before:font-semibold focus-within:before:font-bold
           before:top-[10px] before:left-[10px]
-          focus-within:before:top-[-15px] focus-within:before:bg-white before:duration-300 border border-[#adadad] rounded-lg my-4">
+          focus-within:before:top-[-16px] focus-within:before:bg-white before:duration-300 border border-[#adadad] rounded-lg my-4`}>
             <textarea
               className="w-full h-[100px] p-2 rounded-lg mb-2 outline-none "
               name="context"
