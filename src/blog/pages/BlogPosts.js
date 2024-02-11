@@ -22,11 +22,11 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
   };
 
   return (
-    <div className={`${!isDarkMode ? 'bg-[#102749]' : 'bg-white'} h-full w-full flex flex-col justify-start items-center  p-10 `}>
+    <div className={`${!isDarkMode ? 'bg-[#102749]' : 'bg-[#dedede] '} h-full w-full flex flex-col justify-start items-center  p-10 `}>
       {postLists.map((post) => {
         return (
           <div
-            className={`bg-white text-black h-[500px] shadow-2xl border rounded-md mt-[100px]  flex flex-col justify-start items-center relative p-1 `}
+            className={`bg-white text-black h-[500px] shadow-2xl border rounded-xl mt-[100px]  flex flex-col justify-start items-center relative p-1 `}
             key={post.id}
           >
             
