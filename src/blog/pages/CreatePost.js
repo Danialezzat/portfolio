@@ -115,11 +115,13 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
             name="image"
             onChange={(event) => handleImageChange(event)}
           />
-          {formData.title && formData.context && formData.image && (
+          {(formData.title && formData.context && formData.image) ? (
             <button className="w-full h-[50px] mt-4 font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2" onClick={createPost}>
               Submit post
             </button>
-          )}
+          ) : <button className="w-full h-[50px] mt-4 font-bold text-white text-xl bg-gradient-to-r bg-gray-300 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2" disabled={true} onClick={createPost}>
+          Submit post
+        </button>}
           {/* <p>{percent} "% done"</p> percentage is going to be adde later */}
         </div>
       </div>
