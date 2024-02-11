@@ -26,15 +26,15 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
       {postLists.map((post) => {
         return (
           <div
-            className={`bg-white text-black h-[500px] shadow-2xl border rounded-xl mt-[100px]  flex flex-col justify-start items-center relative p-1 `}
+            className={`bg-white text-black h-[500px] shadow-2xl border rounded-xl mt-[100px] w-[95%]  flex flex-col justify-start items-center relative p-1 `}
             key={post.id}
           >
             
               
-                <img src={post.imageUrl} alt="" className="h-[300px] w-[500px] object-cover  "/>
-                <h1 className="text-2xl text-left bg-white bg-opacity-80 w-[500px] h-[50px] font-bold p-2 absolute top-[254px]">{post.title}</h1>
+                <img src={post.imageUrl} alt="" className="h-[300px] w-[100%] object-cover  "/>
+                <h1 className="text-2xl text-left bg-white bg-opacity-80 w-full h-[50px] font-bold p-2 absolute top-[254px]">{post.title}</h1>
                 <div className=" h-[180px] overflow-y-auto">
-                  <p className="font-semibold  p-2 text-justify w-[500px]">
+                  <p className="font-semibold  p-2 text-justify w-full">
                     {post.postText}
                   </p>
                 </div>
