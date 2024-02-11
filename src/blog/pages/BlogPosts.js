@@ -22,44 +22,39 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
   };
 
   return (
-    <div className="h-screen w-full flex flex-col justify-start items-center ">
+    <div className="h-full w-full flex flex-col justify-start items-center bg-white ">
       {postLists.map((post) => {
         return (
           <div
-            className="shadow-lg border rounded-md mt-10  flex flex-col justify-start items-center  "
+            className="h-[500px] shadow-lg border rounded-md mt-10  flex flex-col justify-start items-center relative p-2 "
             key={post.id}
           >
-            <div className="post-header">
-              <div
-                className={`${
-                  isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
-                }  w-full  flex flex-col justify-between items-center px-4 rounded-t-md   z-10 font-semibold md:w-full`}
-              >
-                <img src={post.imageUrl} alt="" className="h-[300px] w-[500px] object-cover"/>
-                <h1 className="font-semibold">{post.title}</h1>
-                <div className={`${
-                  isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
-                }`}>
+            
+              
+                <img src={post.imageUrl} alt="" className="h-[300px] w-[500px] object-cover  "/>
+                <h1 className="text-2xl text-left bg-white bg-opacity-80 w-[500px] h-[50px] font-bold p-2 absolute top-[258px]">{post.title}</h1>
+                <div>
+                  <p className="font-semibold   p-2 text-justify w-[500px]">
+                    {post.postText}
+                  </p>
+                </div>
+                <div className=''>
                   {isAuth && post.author.id === auth.currentUser.uid && (
                     <button
-                      className={`${
-                        isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
-                      }`}
+                      className='absolute top-0 right-0 p-2 bg-white bg-opacity-55 rounded-bl-md rounded-tr-md text-red-600 font-semibold'
                       onClick={() => deletePost(post.id)}
                     >
                       &#10005;
                     </button>
                   )}
                 </div>
-              </div>
-            </div>
-            <div className="bg-[#ccd6f6] p-2 font-semibold ">
-              {post.postText}
-            </div>
-            <div className="flex flex-row bg-[#ccd6f6] p-2">
-              <h3 className=" font-semibold">@{post.author.name}</h3> . 
-              <h6>({post.createdAt.toDate().toDateString()})</h6>
-            </div>
+                
+                <div className=" flex absolute top-0 left-0 p-2 bg-white bg-opacity-55 rounded-br-md rounded-tl-md">
+                  <h3 className=" font-semibold">@{post.author.name}</h3> . 
+                  <h6>({post.createdAt.toDate().toDateString()})</h6>
+                </div>
+              
+
           </div>
         );
       })}
