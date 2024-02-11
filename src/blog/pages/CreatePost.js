@@ -10,7 +10,7 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
   const navigate = useNavigate();
  
 
-  const [percent, setPercent] = useState(0);
+  // const [percent, setPercent] = useState(0) // pescentage is going to added later
   const [formData, setFormData] = useState({
     title: "",
     context: "",
@@ -44,11 +44,11 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
 console.log(uploadTask)
     uploadTask.on(
       "state_changed",
-      (snapshot) => {const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+      // (snapshot) => {const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
-          // update progress
-          setPercent(percent);
-      },
+      //     // update progress
+      //     setPercent(percent);
+      // },
       (err) => console.log(err),
       () => {
           // download url
@@ -65,15 +65,6 @@ console.log(uploadTask)
   ); 
 
 
-
-
-    // Add post to Firestore
-    // await addDoc(postsCollectionRef, {
-    //   title: formData.title,
-    //   postText: formData.context,
-    //   imageUrl: imageUrl,
-    //   author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
-    //   createdAt: new Date(),
     });
 
     navigate("/bloghome");
@@ -129,30 +120,18 @@ console.log(uploadTask)
             name="image"
             onChange={(event) => handleImageChange(event)}
           />
-          <button
+          {formData.title && formData.context && formData.image  &&<button
             className={`${
               isDarkMode ? "bg-[#4e4cf4]" : "bg-[#0a192f] border"
             }  w-[50%] h-[80px] flex justify-center items-center px-4 rounded-b-md   z-10 font-semibold`}
             onClick={createPost}
           >
             Submit post
-          </button>
-          <p>{percent} "% done"</p>
+          </button>}
+          {/* <p>{percent} "% done"</p> percentage is going to be adde later */}
         </div>
       </div>
     </form>
-    // <div className='h-screen w-full flex flex-col justify-cneter items-center '>
-    //   <div className='h-screen w-full flex flex-col justify-center items-center '>
-    //     <h1 className={`${isDarkMode ? 'bg-[#9896f1]' : 'bg-[#0a192f] border' }  w-[50%] h-[80px] flex justify-center items-center px-4 rounded-t-md   z-10 font-semibold`}>Create a Post</h1>
-    //     <div className='bg-[#ccd6f6] p-2 w-[50%]'>
-    //       <input className='bg-[#ccd6f6] text-black w-full outline-none' id='title' type="text" placeholder='Title...' onChange={(event) => {setTitle(event.target.value)}} />
-    //     </div>
-    //     <div className='bg-[#ccd6f6] p-2 w-[50%]'>
-    //       <textarea className='bg-[#ccd6f6] text-black w-full  outline-none' name="" id="post" placeholder='Write here...' onChange={(event) => {setPostText(event.target.value)}} ></textarea>
-    //     </div>
-    //     <button className={`${isDarkMode ? 'bg-[#9896f1]' : 'bg-[#0a192f] border' }  w-[50%] h-[80px] flex justify-center items-center px-4 rounded-b-md   z-10 font-semibold`} onClick={createPost}>Submit post</button>
-    //   </div>
-    // </div>
   );
 };
 
