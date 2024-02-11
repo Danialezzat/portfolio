@@ -43,7 +43,7 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
     const uploadTask = uploadBytesResumable(storageRef, formData.image);
 console.log(uploadTask)
     uploadTask.on(
-      "state_changed",
+      // "state_changed",
       // (snapshot) => {const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
       //     // update progress
