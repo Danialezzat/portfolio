@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
-import { auth, db } from "../../firebase-config";
+import { auth, db, storage } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
+import {ref, uploadBytesResumable, getDownloadURL } from"firebase/storage" ////////
+
+
 
 const CreatePost = ({ isAuth, isDarkMode }) => {
   const navigate = useNavigate();
+ 
 
-  // const [title, setTitle] = useState("")
-  // const [postText, setPostText] = useState("")
+  const [percent, setPercent] = useState(0);
   const [formData, setFormData] = useState({
     title: "",
     context: "",
+    image: ""
   });
+  
+// updating state function for image
+  const handleImageChange = (event) => {
+    setFormData({...formData, image: event.target.files[0]})
+  }
 
   function handleChange(event) {
     setFormData((prevFormData) => {
@@ -22,24 +31,61 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
     });
   }
 
+
   const postsCollectionRef = collection(db, "post");
 
+
   const createPost = async () => {
-    await addDoc(postsCollectionRef, {
-      title: formData.title,
-      postText: formData.context,
-      author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
-      createdAt: new Date()
+  try {
+    // Upload image to Firebase Storage
+    console.log(formData.image.name)
+    const storageRef = ref(storage, `/image/${formData.image.name}`)
+    const uploadTask = uploadBytesResumable(storageRef, formData.image);
+console.log(uploadTask)
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+
+          // update progress
+          setPercent(percent);
+      },
+      (err) => console.log(err),
+      () => {
+          // download url
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+              console.log(url);
+               addDoc(postsCollectionRef, {
+                title: formData.title,
+                postText: formData.context,
+                imageUrl: url,
+                author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
+                createdAt: new Date(),
+          });
+      }
+  ); 
+
+
+
+
+    // Add post to Firestore
+    // await addDoc(postsCollectionRef, {
+    //   title: formData.title,
+    //   postText: formData.context,
+    //   imageUrl: imageUrl,
+    //   author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
+    //   createdAt: new Date(),
     });
+
     navigate("/bloghome");
-  };
-  console.log(postsCollectionRef)
+  } catch (error) {
+    console.log("Error creating post:", error);
+  }
+};
 
   useEffect(() => {
     if (!isAuth) {
       navigate("/bloghome/bloglogin");
     }
-    console.log("CreatePosts");
   }, [isAuth, navigate]);
 
   return (
@@ -76,6 +122,13 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
               required
             ></textarea>
           </div>
+          
+          <input
+            type="file"
+            accept='image/*'
+            name="image"
+            onChange={(event) => handleImageChange(event)}
+          />
           <button
             className={`${
               isDarkMode ? "bg-[#4e4cf4]" : "bg-[#0a192f] border"
@@ -84,6 +137,7 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
           >
             Submit post
           </button>
+          <p>{percent} "% done"</p>
         </div>
       </div>
     </form>

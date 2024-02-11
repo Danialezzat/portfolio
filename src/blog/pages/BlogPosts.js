@@ -26,15 +26,16 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
       {postLists.map((post) => {
         return (
           <div
-            className="shadow-lg border rounded-md mt-10 w-[400px] sm:w-full "
+            className="shadow-lg border rounded-md mt-10  flex flex-col justify-start items-center  "
             key={post.id}
           >
             <div className="post-header">
               <div
                 className={`${
                   isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
-                }  w-full h-[80px] flex justify-between items-center px-4 rounded-t-md   z-10 font-semibold md:w-full`}
+                }  w-full  flex flex-col justify-between items-center px-4 rounded-t-md   z-10 font-semibold md:w-full`}
               >
+                <img src={post.imageUrl} alt="" className="h-[300px] w-[500px] object-cover"/>
                 <h1 className="font-semibold">{post.title}</h1>
                 <div className={`${
                   isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
