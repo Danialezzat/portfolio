@@ -1,6 +1,6 @@
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore"; // deleteDoc, doc
+import { collection, getDocs, deleteDoc, doc, updateDoc,increment } from "firebase/firestore"; // deleteDoc, doc
 import React, { useEffect, useState } from "react";
-import { auth, db } from "../../firebase-config"; //auth
+import { auth, db } from "../../firebase-config"; 
 import { FcLike } from "react-icons/fc";
 import { FaRegHeart } from "react-icons/fa";
 
@@ -8,20 +8,45 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
   const [postLists, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "post");
 
+
   const getPosts = async () => {
     const data = await getDocs(postsCollectionRef);
     setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
+
+  const deletePost = async (id) => {
+    const postDoc = doc(db, "post", id);
+    await deleteDoc(postDoc);
+  };
+  
+
+  const likePost = async (id) => {
+    const postDocRef = doc(db, "post", id);
+    await updateDoc(postDocRef, {
+      liked: true,
+      likes: increment(1)
+    });
+  };
+
+  const unlikePost = async (id) => {
+    const postDocRef = doc(db, "post", id);
+    await updateDoc(postDocRef, {
+      liked: false,
+      likes:  increment(-1)
+    });
+  }; 
+
+
+
   useEffect(() => {
     console.log("repeated");
     getPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const deletePost = async (id) => {
-    const postDoc = doc(db, "post", id);
-    await deleteDoc(postDoc);
-  };
+ 
+
+
 
   return (
     <div className={`${!isDarkMode ? 'bg-[#102749]' : 'bg-[#dedede] '} h-full w-full flex flex-col justify-start items-center  p-10 `}>
@@ -55,8 +80,9 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
                   <h3 className=" font-semibold">@{post.author.name}</h3> . 
                   <h6>({post.createdAt.toDate().toDateString()})</h6>
                 </div>
-                <div className="absolute left-2 bottom-2 text-xl">
-                  {''  ? <FcLike /> : <FaRegHeart />}
+                <div onClick={() => (post.liked ? unlikePost(post.id) : likePost(post.id))} className="absolute left-2 bottom-2 text-xl cursor-pointer">
+                  {post.liked  ? <FcLike /> : <FaRegHeart />}
+                  {post.likes}
                 </div>
 
           </div>
