@@ -1,6 +1,8 @@
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore"; // deleteDoc, doc
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../../firebase-config"; //auth
+import { FcLike } from "react-icons/fc";
+import { FaRegHeart } from "react-icons/fa";
 
 const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
   const [postLists, setPostList] = useState([]);
@@ -53,7 +55,9 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
                   <h3 className=" font-semibold">@{post.author.name}</h3> . 
                   <h6>({post.createdAt.toDate().toDateString()})</h6>
                 </div>
-              
+                <div className="absolute left-2 bottom-2 text-xl">
+                  {''  ? <FcLike /> : <FaRegHeart />}
+                </div>
 
           </div>
         );
