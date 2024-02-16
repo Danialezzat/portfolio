@@ -1,4 +1,4 @@
-import { collection, getDocs, deleteDoc, doc, updateDoc,increment } from "firebase/firestore"; // deleteDoc, doc
+import { collection, getDocs, deleteDoc, doc, updateDoc,increment, arrayUnion, arrayRemove } from "firebase/firestore"; // deleteDoc, doc
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../../firebase-config"; 
 import { FcLike } from "react-icons/fc";
@@ -23,17 +23,23 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
   const likePost = async (id) => {
     const postDocRef = doc(db, "post", id);
     await updateDoc(postDocRef, {
-      liked: true,
+      liked: arrayUnion(auth.currentUser.uid),
       likes: increment(1)
     });
+    console.log(auth.currentUser.uid )
+
   };
 
   const unlikePost = async (id) => {
     const postDocRef = doc(db, "post", id);
+    console.log(auth.currentUser.uid + '0000001' )
+
     await updateDoc(postDocRef, {
-      liked: false,
+      liked: arrayRemove(auth.currentUser.uid),
       likes:  increment(-1)
     });
+    console.log(auth.currentUser.uid + '0000000' )
+
   }; 
 
 
@@ -80,9 +86,17 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
                   <h3 className=" font-semibold">@{post.author.name}</h3> . 
                   <h6>({post.createdAt.toDate().toDateString()})</h6>
                 </div>
-                <div onClick={() => (post.liked ? unlikePost(post.id) : likePost(post.id))} className="absolute left-2 bottom-8 text-xl cursor-pointer p-1">
-                  {isAuth && (post.liked  ? <FcLike /> : <FaRegHeart />)}
-                  
+                <div onClick={() => {
+                  if(post.liked.indexOf(auth.currentUser.uid) !== -1) {
+                    unlikePost(post.id)
+                  } else {
+                    likePost(post.id)
+                  }
+                }} className="absolute left-2 bottom-8 text-xl cursor-pointer p-1">
+                
+                  {isAuth && ( post.liked.map((like) => {
+                    return (auth.currentUser.uid === like) ? <FcLike /> : <FaRegHeart />
+                  }))}
                 </div>
                 <p className="font-bold absolute left-2 bottom-2 text-xl cursor-pointer p-1">{post.likes} Likes</p>
 
