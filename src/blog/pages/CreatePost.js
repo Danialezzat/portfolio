@@ -146,8 +146,6 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
             <button type="submit" className={`${(formData.title && formData.context && formData.image) ? "w-full h-[50px] mt-4 font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2":' bg-slate-300 w-full h-[50px] mt-4 font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2'}`} onClick={createPost} disabled={(formData.title && formData.context && formData.image) ? false : true}>
               Submit post
             </button>
-         
-          <p>{progress} "% done"</p>
         </div>
       </div>
       <ToastContainer position="bottom-left"/>

@@ -7,6 +7,8 @@ import {
   increment,
   arrayUnion,
   arrayRemove,
+  query,
+  orderBy,
 } from "firebase/firestore"; // deleteDoc, doc
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../../firebase-config";
@@ -18,7 +20,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
   const postsCollectionRef = collection(db, "post");
 
   const getPosts = async () => {
-    const data = await getDocs(postsCollectionRef);
+    const data = await getDocs(query(postsCollectionRef, orderBy("createdAt", "desc")));
     setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
