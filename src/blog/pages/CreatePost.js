@@ -3,25 +3,24 @@ import { addDoc, collection } from "firebase/firestore";
 import { auth, db, storage } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"; ////////
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreatePost = ({ isAuth, isDarkMode }) => {
   const navigate = useNavigate();
 
-  
   const [formData, setFormData] = useState({
     title: "",
     context: "",
     image: "",
   });
-  const [progress, setProgress] = useState(0) 
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (!isAuth) {
       navigate("/bloghome/bloglogin");
-    };
-    if(progress === 100){
+    }
+    if (progress === 100) {
       navigate("/bloghome");
     }
   }, [isAuth, navigate, progress]);
@@ -45,8 +44,7 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
   const createPost = async (event) => {
     try {
       event.preventDefault();
-      console.log('post created');
-
+      console.log("post created");
 
       // Upload image to Firebase Storage
       const storageRef = ref(storage, `/image/${formData.image.name}`);
@@ -54,15 +52,15 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
       uploadTask.on(
         "state_changed",
         (snapshot) => {
-            //percentage is going to be added
-            const percentage = Math.round(
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-              setProgress(prevProgress => Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100));
-              
-              console.log(progress)
-      
+          //percentage is going to be added
+          
+          setProgress((prevProgress) =>
+            Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+          );
 
-            // update progress
+          console.log(progress);
+
+          // update progress
         },
         (err) => {
           console.log(err);
@@ -74,33 +72,26 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
               title: formData.title,
               postText: formData.context,
               imageUrl: url,
-              liked: [''],
+              liked: [""],
               likes: 0,
               author: {
                 name: auth.currentUser.displayName,
                 id: auth.currentUser.uid,
               },
               createdAt: new Date(),
-            })
-          }); 
+            });
+          });
         }
       );
-      
-     
+
       toast.success("post is being uploaded");
-      if(progress === 100){
+      if (progress === 100) {
         navigate("/bloghome");
       }
-      
-      
-        
-      
     } catch (error) {
       console.log("Error creating post:", error);
     }
   };
-
- 
 
   return (
     <form onSubmit={createPost}>
@@ -110,7 +101,11 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
             Create a Post
           </h1>
           <div
-            className={`${formData.title ? "before:font-bold befor:absolute before:top-[-16px] before:bg-white" : 'before:top-[10px]'} w-full relative before:absolute before:content-['Title...'] before:font-semibold 
+            className={`${
+              formData.title
+                ? "before:font-bold befor:absolute before:top-[-16px] before:bg-white"
+                : "before:top-[10px]"
+            } w-full relative before:absolute before:content-['Title...'] before:font-semibold 
              before:left-[10px] focus-within:before:font-bold focus-within:before:top-[-16px]  focus-within:before:bg-white before:duration-300 border border-[#adadad] rounded-lg`}
           >
             <input
@@ -123,9 +118,15 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
               required
             />
           </div>
-          <div className={`${formData.context ? "before:font-bold befor:absolute before:top-[-16px] before:bg-white" : 'before:top-[10px]'} w-full relative    before:absolute before:content-['write_here...'] before:font-semibold focus-within:before:font-bold
+          <div
+            className={`${
+              formData.context
+                ? "before:font-bold befor:absolute before:top-[-16px] before:bg-white"
+                : "before:top-[10px]"
+            } w-full relative    before:absolute before:content-['write_here...'] before:font-semibold focus-within:before:font-bold
            before:left-[10px]
-          focus-within:before:top-[-16px] focus-within:before:bg-white before:duration-300 border border-[#adadad] rounded-lg my-4`}>
+          focus-within:before:top-[-16px] focus-within:before:bg-white before:duration-300 border border-[#adadad] rounded-lg my-4`}
+          >
             <textarea
               className="w-full h-[100px] p-2 rounded-lg mb-2 outline-none "
               name="context"
@@ -142,13 +143,26 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
             name="image"
             onChange={(event) => handleImageChange(event)}
           />
-          
-            <button type="submit" className={`${(formData.title && formData.context && formData.image) ? "w-full h-[50px] mt-4 font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2":' bg-slate-300 w-full h-[50px] mt-4 font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2'}`} onClick={createPost} disabled={(formData.title && formData.context && formData.image) ? false : true}>
-              Submit post
-            </button>
+
+          <button
+            type="submit"
+            className={`${
+              formData.title && formData.context && formData.image
+                ? "w-full h-[50px] mt-4 font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2"
+                : " bg-slate-300 w-full h-[50px] mt-4 font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2"
+            }`}
+            onClick={createPost}
+            disabled={
+              formData.title && formData.context && formData.image
+                ? false
+                : true
+            }
+          >
+            Submit post
+          </button>
         </div>
       </div>
-      <ToastContainer position="bottom-left"/>
+      <ToastContainer position="bottom-left" />
     </form>
   );
 };

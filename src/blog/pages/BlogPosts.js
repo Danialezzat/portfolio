@@ -27,6 +27,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
   const deletePost = async (id) => {
     const postDoc = doc(db, "post", id);
     await deleteDoc(postDoc);
+    getPosts();
   };
 
   const likePost = async (id) => {
@@ -35,6 +36,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
       liked: arrayUnion(auth.currentUser.uid),
       likes: increment(1),
     });
+    getPosts();
     console.log(auth.currentUser.uid);
   };
 
@@ -47,11 +49,12 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
       likes: increment(-1),
     });
     console.log(auth.currentUser.uid + "0000000");
+    getPosts();
   };
 
   useEffect(() => {
-    console.log("repeated");
     getPosts();
+    console.log("repeated");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
