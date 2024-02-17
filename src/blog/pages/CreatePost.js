@@ -86,6 +86,9 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
 
       toast.success("post is being uploaded");
       if (progress === 100) {
+        setTimeout(() => {
+          navigate("/bloghome");
+        },2000)
         navigate("/bloghome");
       }
     } catch (error) {
