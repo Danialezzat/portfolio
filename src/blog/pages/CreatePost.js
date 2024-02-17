@@ -97,7 +97,7 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
     <form onSubmit={createPost}>
       <div className="h-screen w-full flex flex-col justify-center items-center  ">
         <div className="h-[470px] w-[70%] md:w-[400px] bg-white text-black rounded-lg p-4 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-          <h1 className="w-full text-center font-mono font-bold text-4xl p-6 mb-10 border-b-2">
+          <h1 className="w-full text-2xl text-center font-mono font-bold md:text-4xl p-6 mb-10 border-b-2">
             Create a Post
           </h1>
           <div
