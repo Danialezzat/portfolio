@@ -32,11 +32,10 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
 
   const createPost = async () => {
     try {
+      console.log('post created')
       // Upload image to Firebase Storage
-      console.log(formData.image.name);
       const storageRef = ref(storage, `/image/${formData.image.name}`);
       const uploadTask = uploadBytesResumable(storageRef, formData.image);
-      console.log(uploadTask);
       uploadTask.on(
         // "state_changed",
         // (snapshot) => {const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
@@ -53,6 +52,8 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
               title: formData.title,
               postText: formData.context,
               imageUrl: url,
+              liked: [''],
+              likes: 0,
               author: {
                 name: auth.currentUser.displayName,
                 id: auth.currentUser.uid,
