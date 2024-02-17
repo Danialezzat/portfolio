@@ -89,7 +89,6 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
         setTimeout(() => {
           navigate("/bloghome");
         },2000)
-        navigate("/bloghome");
       }
     } catch (error) {
       console.log("Error creating post:", error);
