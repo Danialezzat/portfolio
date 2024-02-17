@@ -3,16 +3,28 @@ import { addDoc, collection } from "firebase/firestore";
 import { auth, db, storage } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"; ////////
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CreatePost = ({ isAuth, isDarkMode }) => {
   const navigate = useNavigate();
 
-  // const [percent, setPercent] = useState(0) // pescentage is going to added later
+  
   const [formData, setFormData] = useState({
     title: "",
     context: "",
     image: "",
   });
+  const [progress, setProgress] = useState(0) 
+
+  useEffect(() => {
+    if (!isAuth) {
+      navigate("/bloghome/bloglogin");
+    };
+    if(progress === 100){
+      navigate("/bloghome");
+    }
+  }, [isAuth, navigate, progress]);
 
   // updating state function for image
   const handleImageChange = (event) => {
@@ -30,24 +42,34 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
 
   const postsCollectionRef = collection(db, "post");
 
-  const createPost = async () => {
+  const createPost = async (event) => {
     try {
-      console.log('post created')
+      event.preventDefault();
+      console.log('post created');
+
+
       // Upload image to Firebase Storage
       const storageRef = ref(storage, `/image/${formData.image.name}`);
       const uploadTask = uploadBytesResumable(storageRef, formData.image);
       uploadTask.on(
-        // "state_changed",
-        // (snapshot) => {const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        "state_changed",
+        (snapshot) => {
+            //percentage is going to be added
+            const percentage = Math.round(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+              setProgress(prevProgress => Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100));
+              
+              console.log(progress)
+      
 
-        //     // update progress
-        //     setPercent(percent);
-        // },
-        (err) => console.log(err),
+            // update progress
+        },
+        (err) => {
+          console.log(err);
+        },
         () => {
           // download url
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            console.log(url);
             addDoc(postsCollectionRef, {
               title: formData.title,
               postText: formData.context,
@@ -59,22 +81,26 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
                 id: auth.currentUser.uid,
               },
               createdAt: new Date(),
-            });
-          });
+            })
+          }); 
         }
       );
-
-      navigate("/bloghome");
+      
+     
+      toast.success("post is being uploaded");
+      if(progress === 100){
+        navigate("/bloghome");
+      }
+      
+      
+        
+      
     } catch (error) {
       console.log("Error creating post:", error);
     }
   };
 
-  useEffect(() => {
-    if (!isAuth) {
-      navigate("/bloghome/bloglogin");
-    }
-  }, [isAuth, navigate]);
+ 
 
   return (
     <form onSubmit={createPost}>
@@ -84,8 +110,8 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
             Create a Post
           </h1>
           <div
-            className={`${formData.title ? 'before:font-bold befor:absolute before:top-[-16px] before:bg-white' : ''} w-full relative before:absolute before:content-['Title...'] before:font-semibold 
-            before:top-[10px] before:left-[10px] focus-within:before:font-bold focus-within:before:top-[-16px]  focus-within:before:bg-white before:duration-300 border border-[#adadad] rounded-lg`}
+            className={`${formData.title ? "before:font-bold befor:absolute before:top-[-16px] before:bg-white" : 'before:top-[10px]'} w-full relative before:absolute before:content-['Title...'] before:font-semibold 
+             before:left-[10px] focus-within:before:font-bold focus-within:before:top-[-16px]  focus-within:before:bg-white before:duration-300 border border-[#adadad] rounded-lg`}
           >
             <input
               className="w-full h-[40px] p-2 rounded-lg mb-6 outline-none "
@@ -97,8 +123,8 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
               required
             />
           </div>
-          <div className={`${formData.context ? 'before:font-bold befor:absolute before:top-[-16px] before:bg-white' : ''} w-full relative    before:absolute before:content-['write_here...'] before:font-semibold focus-within:before:font-bold
-          before:top-[10px] before:left-[10px]
+          <div className={`${formData.context ? "before:font-bold befor:absolute before:top-[-16px] before:bg-white" : 'before:top-[10px]'} w-full relative    before:absolute before:content-['write_here...'] before:font-semibold focus-within:before:font-bold
+           before:left-[10px]
           focus-within:before:top-[-16px] focus-within:before:bg-white before:duration-300 border border-[#adadad] rounded-lg my-4`}>
             <textarea
               className="w-full h-[100px] p-2 rounded-lg mb-2 outline-none "
@@ -116,16 +142,15 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
             name="image"
             onChange={(event) => handleImageChange(event)}
           />
-          {(formData.title && formData.context && formData.image) ? (
-            <button className="w-full h-[50px] mt-4 font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2" onClick={createPost}>
+          
+            <button type="submit" className={`${(formData.title && formData.context && formData.image) ? "w-full h-[50px] mt-4 font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2":' bg-slate-300 w-full h-[50px] mt-4 font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2'}`} onClick={createPost} disabled={(formData.title && formData.context && formData.image) ? false : true}>
               Submit post
             </button>
-          ) : <button className="w-full h-[50px] mt-4 font-bold text-white text-xl bg-gradient-to-r bg-gray-300 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center me-2 mb-2" disabled={true} onClick={createPost}>
-          Submit post
-        </button>}
-          {/* <p>{percent} "% done"</p> percentage is going to be adde later */}
+         
+          <p>{progress} "% done"</p>
         </div>
       </div>
+      <ToastContainer position="bottom-left"/>
     </form>
   );
 };
