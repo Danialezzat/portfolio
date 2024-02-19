@@ -137,6 +137,7 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
               onChange={handleChange}
               value={formData.context}
               required
+              maxLength={250}
             ></textarea>
           </div>
 
