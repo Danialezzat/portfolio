@@ -18,8 +18,8 @@ const BlogHome = ({ isAuth, setIsAuth, isDarkMode }) => {
     <>
       <div
         className={`${
-          isDarkMode ? "flex flex-col justify-center items-center bg-[#dedede] text-black" : " bg-[#0a192f] text-white"
-        } bg-[#0a192f] bg-cover w-full`}
+          isDarkMode ? " bg-[#dedede] text-black" : " bg-[#0a192f] text-white"
+        } bg-[#0a192f] bg-cover w-full flex flex-col justify-center items-center`}
       >
         <nav
           className={`${
