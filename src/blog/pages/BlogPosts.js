@@ -69,22 +69,41 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
       {postLists.map((post) => {
         return (
           <div
-            className={`bg-white text-black h-[500px] shadow-2xl border rounded-xl mt-[100px] w-[95%]  flex flex-col justify-start items-center relative p-1 `}
+            className={`bg-white text-black h-[500px] shadow-2xl border rounded-xl mt-[100px] w-[95%]  flex flex-col justify-start items-left relative  `}
             key={post.id}
           >
             <img
               src={post.imageUrl}
               alt=""
-              className="h-[300px] w-[100%] object-cover  "
+              className="h-[300px] w-[100%] object-cover rounded-t-lg "
             />
-            <h1 className="text-2xl text-left bg-white bg-opacity-80 w-full h-[50px] font-bold p-2 absolute top-[254px]">
-              {post.title}
-            </h1>
-            <div className=" h-[80px] overflow-y-auto pb-8">
-              <p className="font-semibold  p-2  text-justify w-full ">
-                {post.postText}
-              </p>
+            <div
+              onClick={() => {
+                if (post.liked.indexOf(auth.currentUser.uid) !== -1) {
+                  unlikePost(post.id);
+                } else {
+                  likePost(post.id);
+                }
+              }}
+              className="text-3xl py-3 px-2 border-b"
+            >
+              {isAuth &&
+                (post.liked.indexOf(auth.currentUser.uid) !== -1 ? (
+                  <FcLike />
+                ) : (
+                  <FaRegHeart />
+                ))}
             </div>
+            <p className="p-2">
+            &#10084; {post.likes} Likes
+            </p>
+            <h1 className="text-2xl text-left bg-white bg-opacity-80 w-full h-[50px] font-bold  p-2">
+              {post.author.name}: <span className="text-xl">{post.title}</span>
+            </h1>
+            <p className="font-semibold p-2   text-justify w-full ">
+              {post.postText}
+            </p>
+            
             <div className="">
               {isAuth && post.author.id === auth.currentUser.uid && (
                 <button
@@ -100,27 +119,8 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
               <h3 className=" font-semibold">@{post.author.name}</h3> .
               <h6>({post.createdAt.toDate().toDateString()})</h6>
             </div>
-            <div
-              onClick={() => {
-                if (post.liked.indexOf(auth.currentUser.uid) !== -1) {
-                  unlikePost(post.id);
-                } else {
-                  likePost(post.id);
-                }
-              }}
-              className="absolute left-2 bottom-8 text-xl cursor-pointer p-1 bg-white"
-            >
-              {isAuth &&
-                (post.liked.indexOf(auth.currentUser.uid) !== -1 ? (
-                  <FcLike />
-                ) : (
-                  <FaRegHeart />
-                ))}
-            </div>
+            
             <dir>
-              <p className="font-bold absolute left-2 bottom-2 text-xl cursor-pointer p-1">
-                {post.likes} Likes
-              </p>
             </dir>
           </div>
         );
