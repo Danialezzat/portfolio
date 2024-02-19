@@ -118,6 +118,7 @@ const CreatePost = ({ isAuth, isDarkMode }) => {
               name="title"
               value={formData.title}
               required
+              maxLength={30}
             />
           </div>
           <div
