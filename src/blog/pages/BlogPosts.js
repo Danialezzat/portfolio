@@ -74,7 +74,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
       {postLists.map((post) => {
         return (
           <div
-            className={`bg-white text-black h-[550px] shadow-2xl border rounded-xl mt-[100px] w-[95%]  flex flex-col justify-start items-left relative  `}
+            className={`bg-white text-black  shadow-2xl border rounded-xl mt-[100px] w-[95%]  flex flex-col justify-start items-left relative  `}
             key={post.id}
           >
             <img
@@ -102,7 +102,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
             <p className="p-2">
             &#10084; {post.likes} Likes
             </p>
-            <h1 className="text-2xl text-left bg-white bg-opacity-80 w-full h-[50px] font-bold  p-2">
+            <h1 className="text-2xl text-left bg-white bg-opacity-80 w-full  font-bold  p-2">
               {post.author.name}: <span className="text-xl">{post.title}</span>
             </h1>
             <p className="font-semibold p-2   text-justify w-full py-4">
@@ -112,6 +112,9 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
               </span>
               {/* {post.postText} */}
             </p>
+            <div className=" flex text-sm p-2 bg-white bg-opacity-55 rounded-br-md rounded-tl-md">
+              <h6>{post.createdAt.toDate().toDateString()}</h6>
+            </div>
             
             <div className="">
               {isAuth && post.author.id === auth.currentUser.uid && (
@@ -123,14 +126,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
                 </button>
               )}
             </div>
-
-            <div className=" flex absolute top-0 left-0 p-2 bg-white bg-opacity-55 rounded-br-md rounded-tl-md">
-              <h3 className=" font-semibold">@{post.author.name}</h3> .
-              <h6>({post.createdAt.toDate().toDateString()})</h6>
-            </div>
             
-            <dir>
-            </dir>
           </div>
         );
       })}
