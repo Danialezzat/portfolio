@@ -82,7 +82,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
               alt=""
               className="h-[300px] w-[100%] object-cover rounded-t-lg "
             />
-            <div
+            {isAuth && <div
               onClick={() => {
                 if (post.liked.indexOf(auth.currentUser.uid) !== -1) {
                   unlikePost(post.id);
@@ -92,13 +92,12 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
               }}
               className="text-3xl py-3 px-2 border-b"
             >
-              {isAuth &&
-                (post.liked.indexOf(auth.currentUser.uid) !== -1 ? (
+                {(post.liked.indexOf(auth.currentUser.uid) !== -1 ? (
                   <FcLike />
                 ) : (
                   <FaRegHeart />
                 ))}
-            </div>
+            </div>}
             <p className="p-2 text-black">
             &#10084; {post.likes} Likes
             </p>
