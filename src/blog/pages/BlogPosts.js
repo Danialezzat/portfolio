@@ -15,8 +15,13 @@ import { auth, db } from "../../firebase-config";
 import { FcLike } from "react-icons/fc";
 import { FaRegHeart } from "react-icons/fa";
 
+
+
+
+
 const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
   const [postLists, setPostList] = useState([]);
+  const [showMore, setShowMore] = useState(false);
   const postsCollectionRef = collection(db, "post");
 
   const getPosts = async () => {
@@ -69,7 +74,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
       {postLists.map((post) => {
         return (
           <div
-            className={`bg-white text-black h-[500px] shadow-2xl border rounded-xl mt-[100px] w-[95%]  flex flex-col justify-start items-left relative  `}
+            className={`bg-white text-black h-[550px] shadow-2xl border rounded-xl mt-[100px] w-[95%]  flex flex-col justify-start items-left relative  `}
             key={post.id}
           >
             <img
@@ -100,8 +105,12 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
             <h1 className="text-2xl text-left bg-white bg-opacity-80 w-full h-[50px] font-bold  p-2">
               {post.author.name}: <span className="text-xl">{post.title}</span>
             </h1>
-            <p className="font-semibold p-2   text-justify w-full ">
-              {post.postText}
+            <p className="font-semibold p-2   text-justify w-full py-4">
+              {showMore ? post.postText : `${post.postText.substring(0, 25)}`}
+              <span className="text-[#9896f1] cursor-pointer" onClick={() => setShowMore(!showMore)}>
+                {!showMore ? " more..." : " less"}
+              </span>
+              {/* {post.postText} */}
             </p>
             
             <div className="">
