@@ -12,7 +12,8 @@ import {
 } from "firebase/firestore"; // deleteDoc, doc
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../../firebase-config";
-import { FcLike } from "react-icons/fc";
+import { FaHeart } from "react-icons/fa";
+
 import { FaRegHeart } from "react-icons/fa";
 
 
@@ -93,7 +94,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
               className="text-3xl py-3 px-2 border-b"
             >
                 {(post.liked.indexOf(auth.currentUser.uid) !== -1 ? (
-                  <FcLike />
+                  <FaHeart className="text-[#ff2e2e]" />
                 ) : (
                   <FaRegHeart />
                 ))}
