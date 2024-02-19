@@ -99,7 +99,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
                   <FaRegHeart />
                 ))}
             </div>
-            <p className="p-2">
+            <p className="p-2 text-black">
             &#10084; {post.likes} Likes
             </p>
             <h1 className="text-2xl text-left bg-white bg-opacity-80 w-full  font-bold  p-2">
