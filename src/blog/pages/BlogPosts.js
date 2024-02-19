@@ -99,7 +99,7 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
                 ))}
             </div>}
             <p className="p-2 text-black">
-            &#9829; {post.likes} Likes
+            <span className="text-black-900">&#9829;</span> {post.likes} Likes
             </p>
             <h1 className="text-2xl text-left bg-white bg-opacity-80 w-full  font-bold  p-2">
               {post.author.name}: <span className="text-xl">{post.title}</span>
