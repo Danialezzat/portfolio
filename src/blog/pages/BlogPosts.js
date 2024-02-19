@@ -15,6 +15,7 @@ import { auth, db } from "../../firebase-config";
 import { FaHeart } from "react-icons/fa";
 
 import { FaRegHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 
@@ -130,6 +131,9 @@ const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
           </div>
         );
       })}
+      <Link className={`${
+            isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
+          }  w-[95%] rounded-t-lg  h-[80px] flex justify-center items-center px-4    z-10 font-semibold fixed bottom-0 text-3xl text-white`} to="/bloghome/createpost">Create Post</Link>
     </div>
   );
 };
