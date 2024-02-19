@@ -6,6 +6,7 @@ import CreatePost from './blog/pages/CreatePost';
 import BlogLogin from './blog/pages/BlogLogin';
 import Secssions from "./components/Secssions";
 import BlogPosts from "./blog/pages/BlogPosts";
+import Signup from "./blog/pages/Signup";
 
 
 
@@ -20,6 +21,7 @@ function App() {
               <Route index element={<BlogPosts isAuth={isAuth} setIsAuth={setIsAuth} isDarkMode={isDarkMode} />} />
               <Route path='/bloghome/createpost' element={<CreatePost isAuth={isAuth} isDarkMode={isDarkMode} /> } />
               <Route path='/bloghome/bloglogin' element={<BlogLogin  setIsAuth={setIsAuth} isDarkMode={isDarkMode}  />} />
+              <Route path='/bloghome/signup' element={<Signup  setIsAuth={setIsAuth} isDarkMode={isDarkMode}  />} />
             </Route>
             <Route path='/' element={<Secssions isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
         </Routes>
