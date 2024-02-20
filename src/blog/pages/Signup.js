@@ -95,10 +95,15 @@ const Signup = () => {
         </div>
         
         <button
+        disabled={
+            formData.email && formData.password && formData.rePass
+              ? false
+              : true
+          }
           className={`${
-            true
+            formData.email && formData.password
               ? "w-[90%] h-[50px]  font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  mb-2"
-              : " bg-slate-300 w-[90%] h-[50px] mt-4 font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  mb-2"
+              : " bg-slate-300 w-[90%] h-[50px] mt-4 font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  mb-2 "
           } mt-6 mx-auto`}
           type="submit"
         >
