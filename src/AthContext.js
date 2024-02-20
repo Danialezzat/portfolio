@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "./firebase-config"; // db
+import { auth, provider } from "./firebase-config"; // db
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  signInWithPopup,
 } from "firebase/auth";
 // import { setDoc, doc } from "firebase/firestore"; 
 import { Navigate } from "react-router-dom";
@@ -33,6 +34,15 @@ export function AuthContextProvider({ children }) {
     function logIn(email, password) {
       return signInWithEmailAndPassword(auth, email, password);
     }
+
+    const signInWithGoogle = () => {
+      signInWithPopup(auth, provider).then((result) => {
+        localStorage.setItem("isAuth", true);
+        setIsAuth(true);
+        console.log('ath is working till here');
+        <Navigate to="/somewhere/else" />
+      });
+    };
   
     const signUserOut = () => {
         signOut(auth).then(() => {
@@ -55,7 +65,7 @@ export function AuthContextProvider({ children }) {
   
     return (
       // user is
-      <AuthContext.Provider value={{ signUp, logIn, signUserOut }}> 
+      <AuthContext.Provider value={{ signUp, logIn, signUserOut, signInWithGoogle }}> 
         {children}
       </AuthContext.Provider>
     );

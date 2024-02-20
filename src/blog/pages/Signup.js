@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../../AthContext";
+import { AuthContext, UserAuth } from "../../AthContext";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +8,7 @@ const Signup = () => {
     password: "",
     rePass: "",
   });
-
+  const {signInWithGoogle} = useContext(AuthContext)
   const { user, signUp } = UserAuth();
 
   const navigate = useNavigate();
@@ -93,22 +93,30 @@ const Signup = () => {
             type="password"
             />
         </div>
-        
+        <div className="w-[90%] flex h-[60px] justify-center items-center">
         <button
-        disabled={
-            formData.email && formData.password && formData.rePass
-              ? false
-              : true
-          }
-          className={`${
-            formData.email && formData.password
-              ? "w-[90%] h-[50px]  font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  mb-2"
-              : " bg-slate-300 w-[90%] h-[50px] mt-4 font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  mb-2 "
-          } mt-6 mx-auto`}
-          type="submit"
-        >
-          Sign Up
-        </button>
+            disabled={
+                formData.email && formData.password && formData.rePass
+                ? false
+                : true
+            }
+            className={`${
+                formData.email && formData.password
+                ? "w-[50%]   font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center"
+                : " bg-slate-300 w-[50%]   font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  "
+            } h-[60px] mr-1 `}
+            type="submit"
+            >
+            Sign Up
+            </button>
+            <button
+                onClick={signInWithGoogle}
+                type="button"
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-[50%] h-[60px]"
+            >
+                Sign In with Google
+            </button>
+        </div>
         <div className="flex justify- w-full p-6">
           <p>
             You already have an account:{" "}
