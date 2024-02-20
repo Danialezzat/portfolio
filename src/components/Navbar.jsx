@@ -46,14 +46,14 @@ const Navbar = ({setIsDarkMode, isDarkMode}) => {
                 </li>
                 <li>
                 <Link to="work" smooth={true} duration={500}>
-                <button class="before:ease relative h-12 w-24 overflow-hidden  transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700  hover:before:-translate-x-40">
+                <button className="before:ease relative h-12 w-24 overflow-hidden  transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700  hover:before:-translate-x-40">
                     <span relative="relative z-10">Work</span>
                     </button>
                 </Link>
                 </li>
                 <li>
                 <Link to="contact" smooth={true} duration={500}>
-                <button class="before:ease relative h-12 w-24 overflow-hidden  transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700  hover:before:-translate-x-40">
+                <button className="before:ease relative h-12 w-24 overflow-hidden  transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700  hover:before:-translate-x-40">
                     <span relative="relative z-10">Contact</span>
                     </button>
                 </Link>
