@@ -1,14 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext, UserAuth } from "../../AthContext";
+import {  UserAuth } from "../../AthContext";
 
 const BlogLogin = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
   });
-  const {signInWithGoogle} = useContext(AuthContext)
-  const { user, signUp } = UserAuth();
+  const { logIn, signInWithGoogle } = UserAuth(); // user
 
   const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ const BlogLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signUp(formData.email, formData.password);
+      await logIn(formData.email, formData.password);
       navigate("/bloghome");
     } catch (error) {
       console.log(error);
@@ -35,7 +34,6 @@ const BlogLogin = () => {
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center ">
       <form
-        on
         onSubmit={handleSubmit}
         className=" flex flex-col justify-start items-center  bg-[#e3eaf0] w-[400px] rounded-3xl shadow-2xl relative"
       >
@@ -77,8 +75,8 @@ const BlogLogin = () => {
             type="password"
             />
         </div>
-        <div className="w-[90%] flex h-[60px] justify-center items-center">
-        <button
+        <div className="w-[90%] flex h-[60px] justify-between items-center">
+        <button 
             disabled={
                 formData.email && formData.password && formData.rePass
                 ? false
@@ -86,24 +84,24 @@ const BlogLogin = () => {
             }
             className={`${
                 formData.email && formData.password
-                ? "w-[50%]   font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center"
-                : " bg-slate-300 w-[50%]   font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  "
-            } h-[60px] mr-1 `}
+                ? "   font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center"
+                : " bg-slate-300   font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  "
+            } w-[48%] h-[60px] mr-1 `}
             type="submit"
             >
-            Sign Up
+            Log In
             </button>
-            <button
-                onClick={signInWithGoogle}
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-[50%] h-[60px]"
-            >
-                Sign In with Google
-            </button>
+              <div className="w-[48%] flex items-center justify-center h-screen dark:bg-gray-800">
+                <button
+                 onClick={signInWithGoogle} className="px-4 py-2 border flex justify-center items-center gap-2 bg-white border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150 h-[60px] ">
+                    <img className="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo" />
+                    <span>Login with Google</span>
+              </button>
+            </div>
         </div>
         <div className="flex justify- w-full p-6">
           <p>
-            You already have an account:{" "}
+            You don't have an account:{" "}
             <Link className="text-[#7a69a1]" to="/bloghome/signup">
               sign up
             </Link>

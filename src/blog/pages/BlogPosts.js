@@ -23,7 +23,7 @@ import { AuthContext } from "../../AthContext";
 
 
 const BlogPosts = () => {
-  const {isAuth, setIsAuth, isDarkMode} = useContext(AuthContext)
+  const {isAuth, isDarkMode} = useContext(AuthContext)
   const [postLists, setPostList] = useState([]);
   const [showMore, setShowMore] = useState(false);
   const postsCollectionRef = collection(db, "post");

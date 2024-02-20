@@ -1,12 +1,11 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { auth, provider } from "./firebase-config"; // db
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged,
   signInWithPopup,
-} from "firebase/auth";
+} from "firebase/auth"; //onAuthStateChanged
 // import { setDoc, doc } from "firebase/firestore"; 
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +16,7 @@ export const AuthContext = createContext();
 
 
 export function AuthContextProvider({ children }) {
-    const [user, setUser] = useState({});
+    // const [user, setUser] = useState({});
     const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
     const [isDarkMode, setIsDarkMode] = useState(true);
     const navigate = useNavigate()
@@ -37,23 +36,33 @@ export function AuthContextProvider({ children }) {
         
     }
   
-    function logIn(email, password) {
-        signInWithEmailAndPassword(auth, email, password)
+    async function logIn(email, password) {
+        try{
+        await signInWithEmailAndPassword(auth, email, password)
         localStorage.setItem("isAuth", true);
         setIsAuth(true);
         console.log('ath is working till with email');
         navigate('/bloghome')
-        
+        } catch(error) {
+          console.log(error)
+        }
     }
 
-    const signInWithGoogle = () => {
-      signInWithPopup(auth, provider).then((result) => {
+    const signInWithGoogle = async () => {
+        try{
+        await signInWithPopup(auth, provider).then((result) => {
         localStorage.setItem("isAuth", true);
         setIsAuth(true);
         console.log('ath is working till here');
         navigate('/bloghome')
-        
       });
+      
+      } catch(error) {
+        console.log(error)
+
+        }
+        
+      
     };
   
     const signUserOut = () => {
@@ -66,15 +75,15 @@ export function AuthContextProvider({ children }) {
         });
       };
   
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-      });
+    // useEffect(() => {
+    //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    //     setUser(currentUser);
+    //   });
   
-      return () => {
-        unsubscribe();
-      };
-    },[]);
+    //   return () => {
+    //     unsubscribe();
+    //   };
+    // },[]);
   
     return (
       // user is
