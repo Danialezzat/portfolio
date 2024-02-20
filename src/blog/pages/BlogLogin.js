@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { auth, provider } from "../../firebase-config";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AthContext";
 
-const BlogLogin = ({ setIsAuth, isDarkMode }) => {
+const BlogLogin = () => {
+  const {setIsAuth, isDarkMode} = useContext(AuthContext)
   let navigate = useNavigate();
 
   const signInWithGoogle = () => {

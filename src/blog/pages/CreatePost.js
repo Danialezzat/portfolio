@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { auth, db, storage } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"; ////////
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../../AthContext";
 
-const CreatePost = ({ isAuth, isDarkMode }) => {
+const CreatePost = () => {
+  const {isAuth, isDarkMode} = useContext(AuthContext)
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({

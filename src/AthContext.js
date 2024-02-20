@@ -8,7 +8,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 // import { setDoc, doc } from "firebase/firestore"; 
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -19,11 +19,17 @@ export const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
     const [user, setUser] = useState({});
     const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+    const [isDarkMode, setIsDarkMode] = useState(true);
+    const navigate = useNavigate()
 
     // const navigate = useNavigate();
   
     function signUp(email, password) {
       createUserWithEmailAndPassword(auth, email, password);
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
+      console.log('ath is working till with email');
+      navigate('/bloghome')
     //   setDoc(doc(db,'users', email),
     //   {
     //     savedShows: [],
@@ -32,7 +38,12 @@ export function AuthContextProvider({ children }) {
     }
   
     function logIn(email, password) {
-      return signInWithEmailAndPassword(auth, email, password);
+        signInWithEmailAndPassword(auth, email, password)
+        localStorage.setItem("isAuth", true);
+        setIsAuth(true);
+        console.log('ath is working till with email');
+        navigate('/bloghome')
+        
     }
 
     const signInWithGoogle = () => {
@@ -40,7 +51,8 @@ export function AuthContextProvider({ children }) {
         localStorage.setItem("isAuth", true);
         setIsAuth(true);
         console.log('ath is working till here');
-        <Navigate to="/somewhere/else" />
+        navigate('/bloghome')
+        
       });
     };
   
@@ -48,8 +60,9 @@ export function AuthContextProvider({ children }) {
         signOut(auth).then(() => {
           localStorage.clear();
           setIsAuth(false);
+          navigate('/bloghome')
           // navigate("/bloghome/bloglogin");
-          <Navigate to="/somewhere/else" />
+          
         });
       };
   
@@ -65,7 +78,7 @@ export function AuthContextProvider({ children }) {
   
     return (
       // user is
-      <AuthContext.Provider value={{ signUp, logIn, signUserOut, signInWithGoogle }}> 
+      <AuthContext.Provider value={{ signUp, logIn, signUserOut, signInWithGoogle, isAuth, setIsAuth, isDarkMode, setIsDarkMode }}> 
         {children}
       </AuthContext.Provider>
     );

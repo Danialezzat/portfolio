@@ -10,18 +10,20 @@ import {
   query,
   orderBy,
 } from "firebase/firestore"; // deleteDoc, doc
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { auth, db } from "../../firebase-config";
 import { FaHeart } from "react-icons/fa";
 
 import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AthContext";
 
 
 
 
 
-const BlogPosts = ({ isAuth, setIsAuth, isDarkMode }) => {
+const BlogPosts = () => {
+  const {isAuth, setIsAuth, isDarkMode} = useContext(AuthContext)
   const [postLists, setPostList] = useState([]);
   const [showMore, setShowMore] = useState(false);
   const postsCollectionRef = collection(db, "post");

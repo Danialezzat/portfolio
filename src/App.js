@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {  Routes, Route } from "react-router-dom";
 import BlogHome from "./blog/pages/BlogHome";
 import CreatePost from "./blog/pages/CreatePost";
 import BlogLogin from "./blog/pages/BlogLogin";
@@ -15,15 +15,11 @@ function App() {
 
   return (
     <AuthContextProvider>
-      <Router>
         <Routes>
           <Route
             path="/bloghome"
             element={
               <BlogHome
-                isAuth={isAuth}
-                setIsAuth={setIsAuth}
-                isDarkMode={isDarkMode}
               />
             }
           >
@@ -31,20 +27,17 @@ function App() {
               index
               element={
                 <BlogPosts
-                  isAuth={isAuth}
-                  setIsAuth={setIsAuth}
-                  isDarkMode={isDarkMode}
                 />
               }
             />
             <Route
               path="/bloghome/createpost"
-              element={<CreatePost isAuth={isAuth} isDarkMode={isDarkMode} />}
+              element={<CreatePost  />}
             />
             <Route
               path="/bloghome/bloglogin"
               element={
-                <BlogLogin setIsAuth={setIsAuth} isDarkMode={isDarkMode} />
+                <BlogLogin  />
               }
             />
             <Route
@@ -56,13 +49,10 @@ function App() {
             path="/"
             element={
               <Secssions
-                isDarkMode={isDarkMode}
-                setIsDarkMode={setIsDarkMode}
               />
             }
           />
         </Routes>
-      </Router>
     </AuthContextProvider>
   );
 }

@@ -5,8 +5,12 @@ import Navbar from "./Navbar";
 import Skills from "./Skills";
 import Work from "./Work";
 import CrispComponent from "./Crisp";
+import { useContext } from "react";
+import { AuthContext } from "../AthContext";
 
-const Secssions = ({isDarkMode,setIsDarkMode}) => {
+const Secssions = () => {
+  const {isDarkMode, setIsDarkMode} = useContext(AuthContext)
+
   return (
     <div className= 'App flex flex-col justify-between items-center w-full'>
       <Navbar setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />

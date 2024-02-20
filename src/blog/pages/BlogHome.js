@@ -3,8 +3,13 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
 import Button from "./Button";
 import { CiLogin } from "react-icons/ci";
+import { useContext } from "react";
+import { AuthContext } from "../../AthContext";
 
-const BlogHome = ({ isAuth, setIsAuth, isDarkMode }) => {
+const BlogHome = () => {
+  const {isAuth, setIsAuth, isDarkMode} = useContext(AuthContext)
+
+
   let navigate = useNavigate();
 
   const signUserOut = () => {
