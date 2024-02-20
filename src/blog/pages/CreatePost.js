@@ -8,8 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../AthContext";
 
 const CreatePost = () => {
-  const {isAuth, isDarkMode} = useContext(AuthContext)
+  const {isAuth} = useContext(AuthContext)
   const navigate = useNavigate();
+
 
   const [formData, setFormData] = useState({
     title: "",

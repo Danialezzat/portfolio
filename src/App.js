@@ -12,7 +12,7 @@ import { AuthContextProvider } from "./AthContext";
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
-
+ console.log(isAuth, setIsDarkMode)
   return (
     <AuthContextProvider>
         <Routes>
