@@ -38,58 +38,58 @@ const Signup = () => {
       <form
         on
         onSubmit={handleSubmit}
-        className=" flex flex-col justify-start items-center  bg-white w-[400px] rounded-lg shadow-2xl relative"
+        className=" flex flex-col justify-start items-center  bg-[#e3eaf0] w-[400px] rounded-3xl shadow-2xl relative"
       >
         <img
           className="rounded-[50%] h-[100px] w-[100px] border border-white=800 absolute top-[-50px]"
           src="../../../images/profile.png"
           alt="profilepic"
         />
-        <h1 className="text-4xl font-bold font-sans mt-[55px] p-4 w-[90%] text-center border-b-2">
+        <h1 className="text-4xl font-bold font-Pacifico mt-[55px] text-[#7198d2] p-4 w-[90%] text-center border-b-2">
           Sign Up
         </h1>
         <div className={`${
               formData.email
-                ? "before:font-bold befor:absolute before:top-[-16px] before:left-[28px] before:bg-white"
+                ? "before:font-bold befor:absolute before:top-[-16px] before:left-[28px] "
                 : "before:top-[18px] before:left-[28px]"
             } flex justify-center items-center w-full relative    before:absolute before:content-['Email...'] before:font-semibold focus-within:before:font-bold
            before:left-[10px]
-          focus-within:before:top-[-16px] focus-within:before:bg-white before:duration-300 d] rounded-lg my-4 mt-6`}>
+          focus-within:before:top-[-16px]  before:duration-300 d] rounded-lg my-4 mt-6`}>
             <input
             onChange={handleChange}
             name="email"
             value={formData.email}
-            className="w-[90%] h-[60px] border rounded-lg  p-2 outline-none "
+            className="bg-[#d5e1eb] w-[90%] h-[60px] border rounded-2xl  p-2 outline-none "
             type="email"
             />
         </div>
         <div className={`${
               formData.password
-                ? "before:font-bold befor:absolute before:top-[-16px] before:left-[28px] before:bg-white"
+                ? "before:font-bold befor:absolute before:top-[-16px] before:left-[28px] "
                 : "before:top-[18px] before:left-[28px]"
             } flex justify-center items-center w-full relative    before:absolute before:content-['Password...'] before:font-semibold focus-within:before:font-bold
            before:left-[10px]
-          focus-within:before:top-[-16px] focus-within:before:bg-white before:duration-300 d] rounded-lg my-4 mt-6`}>
+          focus-within:before:top-[-16px] before:duration-300 d] rounded-lg my-4 mt-6`}>
             <input
             onChange={handleChange}
             name="password"
             value={formData.password}
-            className="w-[90%] h-[60px] border rounded-lg  p-2 outline-none"
+            className="bg-[#d5e1eb] w-[90%] h-[60px] border rounded-2xl  p-2 outline-none"
             type="password"
             />
         </div>
         <div className={`${
               formData.rePass
-                ? "before:font-bold befor:absolute before:top-[-16px] before:left-[28px] before:bg-white"
+                ? "before:font-bold befor:absolute before:top-[-16px] before:left-[28px] "
                 : "before:top-[18px] before:left-[28px]"
             } flex justify-center items-center w-full relative    before:absolute before:content-['Password...'] before:font-semibold focus-within:before:font-bold
            before:left-[10px]
-          focus-within:before:top-[-16px] focus-within:before:bg-white before:duration-300 d] rounded-lg my-4 mt-6`}>
+          focus-within:before:top-[-16px] before:duration-300 d] rounded-lg my-4 mt-6`}>
             <input
             name="rePass"
             value={formData.rePass}
             onChange={handleChange}
-            className="w-[90%] h-[60px] border rounded-lg  p-2 outline-none"
+            className="bg-[#d5e1eb] w-[90%] h-[60px] border rounded-2xl  p-2 outline-none"
             type="password"
             />
         </div>
@@ -101,7 +101,7 @@ const Signup = () => {
                 : true
             }
             className={`${
-                formData.email && formData.password
+                formData.email && formData.password 
                 ? "w-[50%]   font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center"
                 : " bg-slate-300 w-[50%]   font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  "
             } h-[60px] mr-1 `}

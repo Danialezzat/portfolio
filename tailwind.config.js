@@ -8,6 +8,9 @@ module.exports = {
         "hero-light": "url('../public/images/background-white.jpg')",
         "hero-dark": "url('../public/images/background-dark.jpg')",
       },
+      fontFamily: {
+        'Pacifico': ["Pacifico", 'sans-serif'],
+      },
     },
   },
   plugins: [],

@@ -1,34 +1,115 @@
-import React, { useContext } from "react";
-import { auth, provider } from "../../firebase-config";
-import { signInWithPopup } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../AthContext";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext, UserAuth } from "../../AthContext";
 
 const BlogLogin = () => {
-  const {setIsAuth, isDarkMode} = useContext(AuthContext)
-  let navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  });
+  const {signInWithGoogle} = useContext(AuthContext)
+  const { user, signUp } = UserAuth();
 
-  const signInWithGoogle = () => {
-    signInWithPopup(auth, provider).then((result) => {
-      localStorage.setItem("isAuth", true);
-      setIsAuth(true);
-      navigate("/bloghome");
+  const navigate = useNavigate();
+
+  const handleChange = (event) => {
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [event.target.name]: event.target.value,
+      };
     });
   };
+
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await signUp(formData.email, formData.password);
+      navigate("/bloghome");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div
-      className={`${
-        isDarkMode ? "bg-hero-light" : "bg-hero-white text-gray-300"
-      } w-full h-screen flex flex-col justify-center items-center text-center `}
-    >
-      <p className="font-semibold">sign in with google to continue</p>
-      <button
-        onClick={signInWithGoogle}
-        type="button"
-        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-[50%]"
+    <div className="h-screen w-screen flex flex-col justify-center items-center ">
+      <form
+        on
+        onSubmit={handleSubmit}
+        className=" flex flex-col justify-start items-center  bg-[#e3eaf0] w-[400px] rounded-3xl shadow-2xl relative"
       >
-        Sign In with Google
-      </button>
+        <img
+          className="rounded-[50%] h-[100px] w-[100px] border border-white=800 absolute top-[-50px]"
+          src="../../../images/profile.png"
+          alt="profilepic"
+        />
+        <h1 className="text-4xl font-bold  mt-[55px] p-4 w-[90%] text-[#7198d2] text-center border-b-2 font-Pacifico">
+          Welcome Back
+        </h1>
+        <div className={`${
+              formData.email
+                ? "before:font-bold befor:absolute before:top-[-16px] before:left-[28px] "
+                : "before:top-[18px] before:left-[28px]"
+            } flex justify-center items-center w-full relative    before:absolute before:content-['Email...'] before:font-semibold focus-within:before:font-bold
+           before:left-[10px]
+          focus-within:before:top-[-16px]  before:duration-300 d] rounded-lg my-4 mt-6`}>
+            <input
+            onChange={handleChange}
+            name="email"
+            value={formData.email}
+            className="bg-[#d5e1eb] w-[90%] h-[60px] border rounded-2xl  p-2 outline-none "
+            type="email"
+            />
+        </div>
+        <div className={`${
+              formData.password
+                ? "before:font-bold befor:absolute before:top-[-16px] before:left-[28px] "
+                : "before:top-[18px] before:left-[28px]"
+            } flex justify-center items-center w-full relative    before:absolute before:content-['Password...'] before:font-semibold focus-within:before:font-bold
+           before:left-[10px]
+          focus-within:before:top-[-16px] before:duration-300 d] rounded-lg my-4 mt-6`}>
+            <input
+            onChange={handleChange}
+            name="password"
+            value={formData.password}
+            className="bg-[#d5e1eb] w-[90%] h-[60px] border rounded-2xl  p-2 outline-none"
+            type="password"
+            />
+        </div>
+        <div className="w-[90%] flex h-[60px] justify-center items-center">
+        <button
+            disabled={
+                formData.email && formData.password && formData.rePass
+                ? false
+                : true
+            }
+            className={`${
+                formData.email && formData.password
+                ? "w-[50%]   font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center"
+                : " bg-slate-300 w-[50%]   font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  "
+            } h-[60px] mr-1 `}
+            type="submit"
+            >
+            Sign Up
+            </button>
+            <button
+                onClick={signInWithGoogle}
+                type="button"
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-[50%] h-[60px]"
+            >
+                Sign In with Google
+            </button>
+        </div>
+        <div className="flex justify- w-full p-6">
+          <p>
+            You already have an account:{" "}
+            <Link className="text-[#7a69a1]" to="/bloghome/signup">
+              sign up
+            </Link>
+          </p>
+        </div>
+      </form>
     </div>
   );
 };
