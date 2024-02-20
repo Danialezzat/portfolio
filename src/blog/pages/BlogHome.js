@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AthContext";
 
 const BlogHome = () => {
-  const {isAuth, setIsAuth, isDarkMode} = useContext(AuthContext)
+  const {isAuth, setIsAuth, isDarkMode} = useContext(AuthContext);
 
 
   let navigate = useNavigate();

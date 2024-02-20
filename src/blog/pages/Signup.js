@@ -53,12 +53,12 @@ const Signup = () => {
                 : "before:top-[18px] before:left-[28px]"
             } flex justify-center items-center w-full relative    before:absolute before:content-['Email...'] before:font-semibold focus-within:before:font-bold
            before:left-[10px]
-          focus-within:before:top-[-16px]  before:duration-300 d] rounded-lg my-4 mt-6`}>
+          focus-within:before:top-[-16px]  before:duration-300 d] rounded-lg my-4 mt-6 text-black`}>
             <input
             onChange={handleChange}
             name="email"
             value={formData.email}
-            className="bg-[#d5e1eb] w-[90%] h-[60px] border rounded-2xl  p-2 outline-none "
+            className="bg-[#d5e1eb] w-[90%] h-[60px] border rounded-2xl  p-2 outline-none text-black"
             type="email"
             />
         </div>
@@ -68,12 +68,12 @@ const Signup = () => {
                 : "before:top-[18px] before:left-[28px]"
             } flex justify-center items-center w-full relative    before:absolute before:content-['Password...'] before:font-semibold focus-within:before:font-bold
            before:left-[10px]
-          focus-within:before:top-[-16px] before:duration-300 d] rounded-lg my-4 mt-6`}>
+          focus-within:before:top-[-16px] before:duration-300  rounded-lg my-4 mt-6 text-black`}>
             <input
             onChange={handleChange}
             name="password"
             value={formData.password}
-            className="bg-[#d5e1eb] w-[90%] h-[60px] border rounded-2xl  p-2 outline-none"
+            className="bg-[#d5e1eb] w-[90%] h-[60px] border rounded-2xl  p-2 outline-none text-black"
             type="password"
             />
         </div>
@@ -83,12 +83,12 @@ const Signup = () => {
                 : "before:top-[18px] before:left-[28px]"
             } flex justify-center items-center w-full relative    before:absolute before:content-['Password...'] before:font-semibold focus-within:before:font-bold
            before:left-[10px]
-          focus-within:before:top-[-16px] before:duration-300 d] rounded-lg my-4 mt-6`}>
+          focus-within:before:top-[-16px] before:duration-300 d] rounded-lg my-4 mt-6 text-black`}>
             <input
             name="rePass"
             value={formData.rePass}
             onChange={handleChange}
-            className="bg-[#d5e1eb] w-[90%] h-[60px] border rounded-2xl  p-2 outline-none"
+            className="bg-[#d5e1eb] w-[90%] h-[60px] border rounded-2xl  p-2 outline-none text-black"
             type="password"
             />
         </div>
@@ -117,8 +117,8 @@ const Signup = () => {
               </button>
           </div>
         </div>
-        <div className="flex justify- w-full p-6">
-          <p>
+        <div className="flex justify- w-full p-6 ">
+          <p className="text-black">
             You already have an account:{" "}
             <Link className="text-[#7a69a1]" to="/bloghome/bloglogin">
               login
