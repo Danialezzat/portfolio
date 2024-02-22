@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserAuth } from "../../AthContext";
 import validator from "validator";
 
@@ -13,8 +13,6 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const { signUp, signInWithGoogle } = UserAuth();
-
-  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setFormData((prevFormData) => {
@@ -30,7 +28,6 @@ const Signup = () => {
     e.preventDefault();
     try {
       await signUp(formData.email, formData.password);
-      navigate("/bloghome");
     } catch (error) {
       console.log(error);
     }
@@ -154,7 +151,7 @@ const Signup = () => {
                 ? "  font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center"
                 : " bg-slate-300   font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  "
             } h-[60px] mr-1 w-[48%]`}
-            type="submit"
+            
           >
             Sign Up
           </button>
