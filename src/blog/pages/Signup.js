@@ -8,6 +8,7 @@ const Signup = () => {
     email: "",
     password: "",
     rePass: "",
+    passIsValid: 'notValid',
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -45,6 +46,12 @@ const Signup = () => {
       })
     ) {
       setErrorMessage("Password is Strong");
+      setFormData((prevFormData) => {
+        return {
+          ...prevFormData,
+          passIsValid: 'valid',
+        };
+      });
     } else {
       setErrorMessage("Password is Not Strong");
     }
@@ -148,7 +155,7 @@ const Signup = () => {
                 : true
             }
             className={`${
-              formData.email && formData.password && formData.rePass && formData.rePass === formData.password && errorMessage === 'Password is Strong'
+              formData.passIsValid === 'valid' && formData.email && formData.password && formData.rePass && formData.rePass === formData.password && errorMessage === 'Password is Strong'
                 ? "  font-bold text-white text-xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center"
                 : " bg-slate-300   font-bold text-white text-xl  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  rounded-lg  px-5 py-2.5 text-center  "
             } h-[60px] mr-1 w-[48%]`}
