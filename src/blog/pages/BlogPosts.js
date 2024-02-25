@@ -133,7 +133,7 @@ const BlogPosts = () => {
           </div>
         );
       })}
-      {isAuth && <Link className={`${
+      {isAuth && <Link className={`opacity-70 hover:opacity-100 ${
             isDarkMode ? "bg-[#9896f1]" : "bg-[#0a192f]"
           }  w-[95%] rounded-t-lg  h-[80px] flex justify-center items-center px-4    z-10 font-semibold fixed bottom-0 text-3xl text-white`} to="/bloghome/createpost">Create Post</Link>}
     </div>

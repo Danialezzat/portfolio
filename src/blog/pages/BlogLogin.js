@@ -36,7 +36,7 @@ const BlogLogin = () => {
         className=" flex flex-col justify-start items-center  bg-[#e3eaf0] w-[400px] rounded-3xl shadow-2xl relative"
       >
         <img
-          className="rounded-[50%] h-[100px] w-[100px] border border-white=800 absolute top-[-50px]"
+          className="rounded-[50%]  w-[100px] border border-white=800 absolute top-[-50px]"
           src="../../../images/profile.png"
           alt="profilepic"
         />
