@@ -1,64 +1,72 @@
 import { createContext, useContext, useState } from "react";
-import { auth, provider } from "./firebase-config"; // db
+import { auth, provider } from "./firebase-config"; // Import your Firebase configuration
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   signInWithPopup,
-} from "firebase/auth"; //onAuthStateChanged
-// import { setDoc, doc } from "firebase/firestore";
+  sendEmailVerification,
+} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
 
 export const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
-  // const [user, setUser] = useState({});
-  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+  const [isAuth, setIsAuth] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [accountIsAvailable, setAccountIsAvailable] = useState(false)
+  const [accountIsAvailable, setAccountIsAvailable] = useState(false);
   const navigate = useNavigate();
 
-  // const navigate = useNavigate();
-
   async function signUp(email, password) {
-    // createUserWithEmailAndPassword(auth, email, password);
     try {
-      await createUserWithEmailAndPassword(auth, email, password).then((result) => {
-        localStorage.setItem("isAuth", true);
-        setIsAuth(true);
-        console.log("ath is working till google");
-        navigate("/bloghome"); 
-      });
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await sendEmailVerification(userCredential.user);
+      navigate("/bloghome/bloglogin");
+      toast.success("Please Verify your Email");
     } catch (error) {
       console.log(error);
-
+      setAccountIsAvailable(true);
     }
   }
 
   async function logIn(email, password) {
-    // return signInWithEmailAndPassword(auth, email, password);
     try {
-      await signInWithEmailAndPassword(auth, email, password).then((result) => {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      if (userCredential.user.emailVerified) {
+        console.log('use is verified')
+        navigate("/bloghome");
         localStorage.setItem("isAuth", true);
         setIsAuth(true);
-        console.log("ath is working till google");
-        navigate("/bloghome"); 
-      });
+      } else {
+        toast.error("Please Verify your Email");
+      }
     } catch (error) {
       console.log(error);
-      setAccountIsAvailable(true)
-
+      setAccountIsAvailable(true);
     }
   }
 
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, provider).then((result) => {
-        localStorage.setItem("isAuth", true);
-        setIsAuth(true);
-        console.log("ath is working till here");
-        navigate("/bloghome");
-      });
+      const result = await signInWithPopup(auth, provider);
+      if (!result.user.emailVerified) {
+        throw new Error(
+          "Email not verified. Please verify your email to login."
+        );
+      }
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
+      navigate("/bloghome");
     } catch (error) {
       console.log(error);
     }
@@ -66,16 +74,13 @@ export function AuthContextProvider({ children }) {
 
   const signUserOut = () => {
     signOut(auth).then(() => {
-      localStorage.clear();
+      localStorage.removeItem("isAuth");
       setIsAuth(false);
       navigate("/bloghome");
     });
   };
 
- 
-
   return (
-    // user is
     <AuthContext.Provider
       value={{
         signUp,
@@ -86,10 +91,11 @@ export function AuthContextProvider({ children }) {
         setIsAuth,
         isDarkMode,
         setIsDarkMode,
-        accountIsAvailable
+        accountIsAvailable,
       }}
     >
       {children}
+    <ToastContainer position="bottom-left" />
     </AuthContext.Provider>
   );
 }

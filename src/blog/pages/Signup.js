@@ -28,6 +28,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       await signUp(formData.email, formData.password);
+      
     } catch (error) {
       console.log(error);
     }
